@@ -169,24 +169,6 @@ def update_users():
       
   return redirect(url_for("panel", pag="agent_manage", title="POST COMPLET"))
 
-def categorys_get():
-  categorys = []
-  # act_ = request.args.get('act_')
-  # if act_ == "act_list":
-  #   for row in sqlite_utils.Database('data_db/blog.sqlite3')['categories'].rows: #sqlite_utils.Database('data_db/blog.sqlite3').query("SELECT * FROM categories;"):
-  #     categorys.append(row)
-    
-  #   return render_template("admin/panel.html", pag="category_edit", title='CATEGORY EDITOR', cat_lst=categorys, cat_len=int(len(categorys)))
-  #   # return jsonify(categorys)
-  
-  # if act_ == "get":
-  #   cat_id = request.args.get("cat_id")
-  #   for row in sqlite_utils.Database('data_db/blog.sqlite3')['categories'].rows_where("id = :cat_id", {"cat_id": cat_id}): #sqlite_utils.Database('data_db/blog.sqlite3').query("SELECT * FROM categories;"):
-  #     categorys.append(row)
-  #   return jsonify(categorys[0])
-  
-  # return render_template("admin/panel.html", pag="category_edit", title='CATEGORY EDITOR', cat_lst=categorys, cat_len=int(len(categorys)))
-
 def categorys_edit():
   # order_act = request.args.get('acts_')
   
