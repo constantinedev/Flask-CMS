@@ -6,13 +6,16 @@ This is the following module we ued in this DEMO project.
 
 * Flask
 * Flask Longin
-* Flask SQLAlchemy
 * Werkzeug Secuirty
 * sqlite utils
 * Tiny MCE v5 Editor
 
 For the basic This Demo will show you the basic secuirty login and, How to update the data with SQLite Database.
 What does it means? If you need the custom order, content this project developer for make a user require.
+We free out the SQLAlchemy to use the sqlite_utils to connect with the DB.
+That means in our develop can make most different DB connections.
+We are also many thank for Tiny MCE support the javascript plugin for this demo.
+Also you can make your favourite text editor or more plugin.
 
 ## Configure The Demo
 
@@ -32,7 +35,7 @@ Support any browser with no plugin or cookies blocking.
 
 ## First Time Setup
 
-Go to your browser and lonig with http://locahost:5001/login
+Go to your browser and lonig with http://locahost:8001/login (Port 8001 for default, you can change the debug also in run.py)
 And you will see our demo regist link at the bottom.
 Regist the account by yourself and start play our demo blogger CMS.
 
