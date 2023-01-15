@@ -1,0 +1,23 @@
+main {
+	/* margin-top: 10px; */
+}
+
+body {
+	background-color: none;
+	color: #000;
+	font-size: 12pt;
+	font-family: monospace;
+}
+
+.input-group-text {
+	min-width: 90px;
+}
+
+.fix-footer {
+	padding: 5rem 0;
+	color: #00ff00;
+	text-align: center;
+	height: 120px;
+	background-color: none;
+	/* border-top: .05rem solid #00ff00; */
+}

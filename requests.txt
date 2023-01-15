@@ -1,0 +1,4 @@
+sqlite_utils
+werkzeug
+flask
+flask_login

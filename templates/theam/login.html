@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block main%}
+<div class="is-Responsive" id="lgoin_form">
+	<form class="form-control my-3" id="login-form" method="POST">
+		<div class="input-group my-2 mb-3">
+			<label class="input-group-text" id="username_label" for="username">LOGIN</label>
+			<input class="form-control" id="username" name="username" type="text" placeholder="username" required/>
+		</div>
+		<div class="input-group my-2 mb-3">
+			<label class="input-group-text" id="password_label" for="password">PASSWORD</label>
+			<input class="form-control" id="password" name="password" type="password"  required/>
+		</div>
+		<div class="btn-group d-grid" style="color:red;">
+			{% if pwd_err %}
+				<span class="text-center">{{pwd_err}}</span>
+			{% endif %}
+		</div>
+		<div class="btn-group d-grid">
+			<button class="btn" type="submit">LOGIN</button>
+			<a class="text-center" href="/regist">Create New Account?</a>
+			<a class="text-center" href="/password_forgot">Forgot Password?</a>
+		</div>
+	</form>
+</div>
+
+<style>
+	#lgoin_form .input-group-text {
+		min-width: 6.5rem;
+	}
+
+	#login-form {
+	position: absolute;
+    margin: auto;
+	top: 40%; left: 0; bottom: 0; right: 0;
+	min-width: 200px;
+  	max-width: 400px;
+	width: 50%; 
+  	max-height: 15rem;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #333;
+	}
+</style>
+{% endblock main%}

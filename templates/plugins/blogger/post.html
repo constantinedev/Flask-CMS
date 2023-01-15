@@ -1,0 +1,128 @@
+<form class="row g-3" method="POST" action="/panel?mod=blogger&act_=crt_newpost">
+  <div class="input-group">
+	<span for="agent-id" class="input-group-text">AGENT</span>
+	<input type="text text-sm" class="form-control" id="agent-id" name="agent-id" value="{{current_user.dpName}}" readonly required>
+  </div>
+  <div class="input-group">
+	<span for="author" class="input-group-text">AUTHOR</span>
+	<!-- <input type="text text-sm" class="form-control" id="author" name="author" value="{{current_user.dpName}}" required> -->
+	<select class="form-select" id="author" name="author" aria-label="author-select">
+		{% if agents_lst %}
+			{% for i in range(0, agents_len) %}
+				{% if agents_lst[i]['username'] == current_user.dpName %}
+					<option value="{{agents_lst[i]['username']}}" selected>{{ agents_lst[i]['username'] }}</option>
+				{% else %}
+					<option value="{{agents_lst[i]['username']}}">{{ agents_lst[i]['username'] }}</option>
+				{% endif %}
+			{% endfor %}
+		{% else %}
+			<option disabled>No Author</option>
+		{% endif %}
+	</select>
+  </div>
+  
+  <div class="col-4">
+	<div class="input-group col-4">
+		<span for="publish-date" class="input-group-text">PUBLISH DATE</span>
+		<input type="date" class="form-control" id="publish-date" name="publish-date" value="" required>
+	</div>
+  </div>
+  <div class="col-4">
+	<div class="input-group col-4">
+		<span for="status" class="input-group-text">STATUS</span>
+		<select class="form-select" aria-label="select status" id="status" name="status" required>
+			<option value="DISABLE" selected>DISABLE</option>
+			<option value="ENABLE">ENABLE</option>
+		</select>
+	</div>
+  </div>
+  <div class="col-4">
+	<div class="input-group col-4">
+		<span for="categories" class="input-group-text">CATEGORIES</span>
+		<select class="form-select" aria-label="select categories" id="categories" name="categories" required>
+			{% if categorys_lst %}
+				{% for i in range(0, categorys_len)%}
+					<option value="{{categorys_lst[i]['link']}}">{{ categorys_lst[i]['name'] }}</option>
+				{% endfor %}
+				{% else %}
+					<option disabled>No Categories</option>
+			{% endif %}
+		</select>
+	</div>
+  </div>
+  
+  <div class="input-group">
+	<span for="tag" class="input-group-text">TAG</span>
+	<input type="text text-sm" class="form-control" id="tag" name="tag" value="">
+  </div>
+
+	<div class="col">
+		<div class="input-group col-4">
+			<span for="post-title" class="input-group-text">POST TITLE* </span>
+			<input type="text" class="form-control" id="post-title" name="post-title" value="" placeholder="POST TITLE ...." required>
+		</div>
+	</div>
+
+  <div class="input-group">
+	
+	<!-- Tiny Editor -->
+	<textarea id="post" name="post-content" rows="25" placeholder="Input your post or pase your html...."></textarea>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/tinymce/tinymce.min.js') }}"></script>
+	<script type="text/javascript">
+		tinymce.init({
+			selector: '#post',
+			plugins: [
+				'advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak spellchecker',
+				'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+				'save table contextmenu directionality template paste textcolor codesample'
+			],
+			imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
+			toolbar: 'insertfile undo redo | styleselect | bold italic | code alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | codesample',
+			images_upload_url: "/panel?mod=imgupload",
+			automatic_uploads: true,
+			images_reuse_filename: false,
+			images_upload_base_path: '/static/uploads',
+			codesample_languages: [
+				{ text: 'HTML/XML', value: 'markup' },
+				{ text: 'JavaScript', value: 'javascript' },
+				{ text: 'CSS', value: 'css' },
+				{ text: 'Processing', value: 'processing' },
+				{ text: 'Python', value: 'python' }
+			],
+			width: "100%",
+		});
+	</script>
+  </div>
+	{% with status = get_flashed_messages() %}
+		{% if status %}
+			{% for status in status %}
+				<div class="col-12 text-center">{{ status }}</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+  
+	<div class="col-12">
+	<div class="form-check bg-info border rounded">
+	  <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+	  <label class="form-check-label" for="invalidCheck">
+		Agree to terms and conditions
+	  </label>
+	  <div class="invalid-feedback">
+		You must agree before submitting.
+	  </div>
+	</div>
+  </div>
+  <div class="col">
+		<button class="col-12 btn btn-primary" type="submit">SUBMIT POST</button>
+	</div>
+	<div class="col">
+		<button class="col-12 btn btn-secondary" type="reset" data-bs-dismiss="modal">RESET</button>
+	</div>
+  </div>
+</form>
+
+<style>
+	.input-group-text {
+		min-width: 9rem;
+	}
+</style>

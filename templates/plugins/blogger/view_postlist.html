@@ -1,0 +1,228 @@
+<div class="form-control">
+<table class="g-3 my-3 table table-bordered table-hover table-responsive">
+	<thead class="table-dark">
+		<tr>
+			<th>TITLE</th>
+			<th class="col-2">AUTHOR</th>
+			<th>CONTENT</th>
+			<th class="col-1">CATEGORY</th>
+			<th class="col-2">PUBLISH DATE</th>
+			<th class="col-1">STATUS</th>
+			<th class="col-1 text-center">EDIT</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% if post_lst %}
+			{% for i in range(0, post_len) %}
+			<tr>
+				<td>{{post_lst[i]['title']}}</td>
+				<td>{{post_lst[i]['author']}}</td>
+				<td>{{post_lst[i]['content']}}</td>
+				<td>{{post_lst[i]['categories']}}</td>
+				<td>{{post_lst[i]['publish_date']}}</td>
+				<td>{{post_lst[i]['status']}}</td>
+				<td class="col-1 text-center">
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-outline-secondary edit" id="edit" name="edit" value="{{post_lst[i]['id']}}" data-bs-toggle="modal" data-bs-target="#post_eritor">EDIT</button>
+						<button type="button" class="btn btn-sm btn-outline-danger del" id="del" name="del" value="{{post_lst[i]['id']}}">DEL</button>
+					</div>
+				</td>
+			</tr>
+			{% endfor %}
+		{% else %}
+		<td colspan="7" class="text-center">.:No Post Here Try To Ceate A New Post And Return:.</td>
+		{% endif %}
+	</tbody>
+</table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="post_eritor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
+		<div class="modal-content">
+			
+				<div class="modal-header">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				
+				<div class="modal-body">
+					<div class="container-fluid">
+						<form class="row g-3" method="POST" action="/panel?mod=blogger&act_=update_post">
+							<div class="input-group">
+								<span for="agent-id" class="input-group-text">AGENT</span>
+								<input type="text text-sm" class="form-control" id="agent-id" name="agent-id" value="{{current_user.dpName}}"
+									readonly required>
+							</div>
+							
+							<div class="input-group">
+								<span for="author" class="input-group-text">AUTHOR</span>
+								<!-- <input type="text text-sm" class="form-control" id="author" name="author" value="{{current_user.dpName}}" required> -->
+								<select class="form-select" id="author" name="author" aria-label="author-select">
+									{% if agents_lst %}
+									{% for i in range(0, agents_len) %}
+									{% if agents_lst[i]['username'] == current_user.dpName %}
+										<option value="{{agents_lst[i]['username']}}" selected>{{ agents_lst[i]['username'] }}</option>
+									{% else %}
+										<option value="{{agents_lst[i]['username']}}">{{ agents_lst[i]['username'] }}</option>
+									{% endif %}
+									{% endfor %}
+									{% else %}
+									<option disabled>No Author</option>
+									{% endif %}
+								</select>
+							</div>
+						
+							<div class="col-4">
+								<div class="input-group col-4">
+									<span for="publish-date" class="input-group-text">PUBLISH DATE</span>
+									<input type="date" class="form-control" id="publish-date" name="publish-date" value="" required>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="input-group col-4">
+									<span for="status" class="input-group-text">STATUS</span>
+									<select class="form-select" aria-label="select status" id="status" name="status" required>
+										<option value="DISABLE">DISABLE</option>
+										<option value="ENABLE">ENABLE</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-4">
+								<div class="input-group col-4">
+									<span for="categories" class="input-group-text">CATEGORIES</span>
+									<select class="form-select" aria-label="select categories" id="categories" name="categories" required>
+										{% if categorys_lst %}
+										{% for i in range(0, categorys_len)%}
+											<option value="{{categorys_lst[i]['link']}}">{{ categorys_lst[i]['name'] }}</option>
+										{% endfor %}
+										{% else %}
+											<option disabled>No Categories</option>
+										{% endif %}
+									</select>
+								</div>
+							</div>
+						
+							<div class="input-group">
+								<span for="tag" class="input-group-text">TAG</span>
+								<input type="text text-sm" class="form-control" id="tag" name="tag" value="">
+							</div>
+						
+							<div class="col">
+								<div class="input-group col-4">
+									<span for="post-title" class="input-group-text">POST TITLE* </span>
+									<input type="text" class="form-control" id="post-title" name="post-title" value="" placeholder="POST TITLE ...." required>
+								</div>
+							</div>
+						
+							<div class="input-group">
+						
+								<!-- Tiny Editor -->
+								<textarea id="post" name="post-content" rows="25" placeholder="Input your post or pase your html...."></textarea>
+								<script type="text/javascript" src="{{ url_for('static', filename='js/tinymce/tinymce.min.js') }}"></script>
+								<script type="text/javascript">
+									tinymce.init({
+										selector: '#post',
+										plugins: [
+											'advlist autolink link image imagetools lists charmap print preview hr anchor pagebreak spellchecker',
+											'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+											'save table contextmenu directionality template paste textcolor codesample'
+										],
+										imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
+										toolbar: 'insertfile undo redo | styleselect | bold italic | code alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | codesample',
+										images_upload_url: "/panel?mod=imgupload",
+										automatic_uploads: true,
+										images_reuse_filename: false,
+										images_upload_base_path: '/static/uploads',
+										codesample_languages: [
+											{ text: 'HTML/XML', value: 'markup' },
+											{ text: 'JavaScript', value: 'javascript' },
+											{ text: 'CSS', value: 'css' },
+											{ text: 'Processing', value: 'processing' },
+											{ text: 'Python', value: 'python' }
+										],
+										width: "100%",
+									});
+								</script>
+							</div>
+							{% with status = get_flashed_messages() %}
+							{% if status %}
+							{% for status in status %}
+							<div class="col-12 text-center">{{ status }}</div>
+							{% endfor %}
+							{% endif %}
+							{% endwith %}
+						
+							<div class="col-12">
+								<div class="form-check bg-info border rounded">
+									<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+									<label class="form-check-label" for="invalidCheck">
+										Agree to terms and conditions
+									</label>
+									<div class="invalid-feedback">
+										You must agree before submitting.
+									</div>
+								</div>
+							</div>
+							
+							<div class="col d-grid">
+								<div class="btn-group">
+									<button class="col-6 btn btn-primary" id="upd_post_btn" name="postID" value="" type="submit">UPATE POST</button>
+									<button class="col-6 btn btn-secondary" data-bs-dismiss="modal" type="button">CLOSE</button>
+								</div>
+							</div>
+						</form>
+						
+						<style>
+							.input-group-text {
+								min-width: 9rem;
+							}
+						</style>
+					</div>
+				</div>
+
+				<div class="modal-footer">
+					<!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save</button> -->
+				</div>
+			
+		</div>
+	</div>
+</div>
+
+<script>
+	$('.edit').on('click', function(){
+		$.get('/panel?mod=blogger&pag=post_review&id=' + $(this).val(), function (data){
+			console.log(data);
+			$(".modal-title").text("EDIT: " + data['title']);
+			$("#agent-id").val(data['crt_agent']);
+			$('#author').val(data['author']);
+			$("[value='"+ data['status'] +"']").prop('selected', true);
+			// if (data['status'] == ){};
+			
+			$('#publish-date').val(data['publish_date']);
+			$('#post-title').val(data['title']);
+			tinymce.get("post").setContent(data['content']);
+			$('#upd_post_btn').val(data['id']);
+		});
+	});
+
+	$('.del').on('click', function(){
+		$.ajax({
+			type: "POST",
+			url: "/panel?mod=blogger&act_=remove&id=" + $(this).val(),
+			contentType: "application/json:charset=UT-8",
+			data: {
+				'id': $(this).val(),
+			},
+			success: function(data) {
+				console.log(data);
+					window.location.reload(true);
+			},
+			error: function(err){
+				$('#resSTA').html(data['status']);
+			},
+		});
+	});
+
+</script>

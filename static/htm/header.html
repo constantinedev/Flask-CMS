@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg">
+	<div class="container-fluid">
+		<div class="site_logo">
+			<a class="navbar-brand cursor" href="/">
+				<!-- <img src="static/imgs/site-icon.svg" alt="site-logo" width="42px" height="42px" /> -->
+				&nbsp;Demo Flask CMS&nbsp;
+			</a>
+		</div>
+		<div class="justify-content-end">
+		<button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="offcanvasNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+			<div class="offcanvas offcanvas-end" id="offcanvasNavbar">
+				<div class="offcanvas-header">
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+				</div>
+				<div class="navbar-nav text-center">
+					<a class="nav-link" aria-current="page" href="/">HOME</a>
+					<a class="nav-link" aria-current="page" href="#" id="abuot" data-bs-toggle="modal" data-bs-target="#modalId">ABOUT US</a>
+					<a class="nav-link" aria-current="page" href="#" id="content_us" data-bs-toggle="modal" data-bs-target="#modalId">CONTENT US</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl" id="header-menu-modal" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="modal-title h3" id="modalTitleId"><strong>Loading ...</strong></span>
+				<button type="button" class="btn-close btn-close-red" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				Body
+			</div>
+			<div class="modal-footer">
+				<!-- <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-outline" disabled>DUMMY SAVE</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$("#abuot").on("click", function () {
+		$(".modal-body").html("connecting...");
+		// $(".modal-body").load("static/htm/abuot.html");
+		$('#modalTitleId').html("<strong>Loading ...</strong>");
+		// $('#modalTitleId').html("<strong>ABOUT US</strong>");
+	});
+	$("#donations").on("click", function () {
+		$(".modal-body").html("connecting...");
+		// $(".modal-body").load("static/htm/donations.html");
+		$('#modalTitleId').html("<strong>Loading ...</strong>");
+		// $('#modalTitleId').html("<strong>DONATIONS TO US</strong>");
+	});
+	$("#ordernow").on("click", function () {
+		$(".modal-body").html("connecting...");
+		// $(".modal-body").load("static/htm/order_form.html");
+		$('#modalTitleId').html("<strong>Loading ...</strong>");
+		// $('#modalTitleId').html("<strong>ORDER NOW</strong>");
+	});
+</script>

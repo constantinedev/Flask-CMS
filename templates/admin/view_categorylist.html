@@ -1,0 +1,224 @@
+<div class="form-control border roinder">
+	<!-- Button trigger modal -->
+	<div class="text text-end">
+		<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-category">ADD</button>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover table-responsive">
+			<thead class="table-dark">
+				<tr class="">
+					<th scope="col">NAME</th>
+					<th scope="col">LINK</th>
+					<th scope="col">DESCRAPTION</th>
+					<th scope="col" style="text-align:center;">EDIT</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if cat_lst %}
+					{% for i in range(0, cat_len) %}
+						<tr class="category-list" id="category-list">
+							<td class="col-2">{{ cat_lst[i]['name'] }}</td>
+							<td class="col-2">{{ cat_lst[i]['link'] }}</td>
+							<td>{{ cat_lst[i]['description'] }}</td>
+							<td class='col-1 text-center'>
+								<div class='btn-group'>
+									<button type='button' href="#" class='btn btn-outline-primary btn-sm edit' data-bs-toggle='modal' data-bs-target='#update-category' value="{{ cat_lst[i]['id'] }}" id='edit' name='edit'>EDIT</button>
+									<button type='button' href="#" class='btn btn-outline-danger btn-sm del' value="{{ cat_lst[i]['id'] }}" id='del' name='del'>DEL</button>
+								</div>
+							</td>
+						</tr>
+					{% endfor %}
+					{% else %}
+					<td colspan="4" class="text-center">.:No Category Create One On Top ADD Button:.</td>
+				{% endif %}
+			</tbody>
+		</table>
+	</div>
+		
+</div>
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div class="modal fade" id="add-category" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitleId">ADD CATEGORY</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form class="row g-3"> 
+					<div class="input-group">
+						<span for="name" class="input-group-text">NAME</span>
+						<input type="text text-sm" class="form-control" id="name" name="name" value="" required>
+					</div>
+					<div class="input-group">
+						<span for="link" class="input-group-text">LINK CODE</span>
+						<input type="text text-sm" class="form-control" id="link" name="link" value="" required>
+					</div>
+
+					<span for="desc_" class="form-label">DESCRIPTION</span>
+					<div class="input-group">
+						
+						<textarea class="form-control" rows="5" cols="" id="desc_" name="desc_" placeholder="Write about the category..."></textarea>
+
+					</div>
+					{% with res_status = get_flashed_messages() %}
+					{% if res_status %}
+					{% for status in res_status %}
+						<span class="text text-sm text-center" id="resSTA">{{status}}</span>
+					{% endfor %}
+					{% else %}
+						<span class="text text-sm text-center" id="resSTA"></span>
+					{% endif %}
+					{% endwith %}
+					<div class="col">
+						<button class="col-12 btn btn-primary" type="button" id="add_category_btn">ADD</button>
+					</div>
+					<div class="col">
+						<button class="col-12 btn btn-secondary" type="button" data-bs-dismiss="modal">CLOSE</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				
+				<!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#add_category_btn').on('click', function(){
+		$.ajax({
+			type: "POST",
+			url: "/panel?mod=settings&pag=categorys&acts_=add",
+			contentType: "application/json;charset=UTF-8",
+			data: JSON.stringify({
+				"name": $('#name').val(),
+				"link": $('#link').val(),
+				"desc_": $('#desc_').val(),
+			}),
+			success: function(data){
+				$('#resSTA').html(data['status']);
+			},
+			error: function(){
+				$('#resSTA').html(data['status']);
+			},
+		});
+	});
+
+</script>
+
+<!-- Update Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div class="modal fade" id="update-category" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitleId">UPADTE CATEGORY</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- action="/panel?mod=categorys&acts_=add" -->
+				<form class="row g-3"> 
+					<div class="input-group">
+						<span for="name" class="input-group-text">NAME</span>
+						<input type="text text-sm" class="form-control" id="name-update" name="name" value="" required>
+					</div>
+					<div class="input-group">
+						<span for="link" class="input-group-text">LINK CODE</span>
+						<input type="text text-sm" class="form-control" id="link-update" name="link" value="" required>
+					</div>
+
+					<span for="desc_" class="form-label">DESCRIPTION</span>
+					<div class="input-group">
+						
+						<textarea class="form-control" rows="5" cols="" id="desc_-update" name="desc_" placeholder="Write about the category..."></textarea>
+
+					</div>
+					<div class="col-12 text-center">
+						{% with res_status = get_flashed_messages() %}
+						{% if res_status %}
+						{% for status in res_status %}
+						<span class="text text-sm text-center" id="resSTA">{{status}}</span>
+						{% endfor %}
+						{% else %}
+						<span class="text text-sm text-center" id="resSTA"></span>
+						{% endif %}
+						{% endwith %}
+					</div>
+
+					<div class="col">
+						<button class="col-12 btn btn-primary udp_category_btn" value="" type="button" id="udp_category_btn">UPDATE</button>
+					</div>
+					<div class="col">
+						<button class="col-12 btn btn-secondary" type="button" data-bs-dismiss="modal">CLOSE</button>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				
+					
+				<!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('.edit').on('click', function(){
+		$('#resSTA').text("");
+		$.get("/panel?pag=categorys_edit&act_=get&cat_id=" + $(this).val(), function(data){
+				$('#name-update').val(data['name']);
+				$('#link-update').val(data['link']);
+				$('#desc_-update').val(data['description']);
+			}
+		);
+		
+		$('#udp_category_btn').val($(this).val());
+	});
+
+	$('.udp_category_btn').on('click', function () {
+		$.ajax({
+			type: "POST",
+			url: "/panel?mod=settings&pag=categorys&acts_=update&id=" + $(this).val(),		
+			contentType: "application/json;charset=UTF-8",
+			data: JSON.stringify({
+				"name": $('#name-update').val(),
+				"link": $('#link-update').val(),
+				"desc_": $('#desc_-update').val(),
+			}),
+			success: function(data){
+				console.log(data)
+				$('#resSTA').html(data['status']);
+				window.location.reload(true);
+			},
+			error: function(err) {
+				$('#resSTA').html(data['status']);
+			},
+		});
+	});
+
+	$('.del').on('click', function () {
+			$.ajax({
+				type: "POST",
+				url: "/panel?mod=settings&pag=categorys&acts_=remove&id=" + $(this).val(),
+				contentType: "application/json;charset=UTF-8",
+				data: JSON.stringify({
+					"id": $(this).val(),
+				}),
+				success: function (data) {
+					console.log(data)
+					$('#resSTA').html(data['status']);
+					window.location.reload(true);
+				},
+				error: function (err) {
+					$('#resSTA').html(data['status']);
+				},
+			});
+		});
+</script>

@@ -1,0 +1,183 @@
+<div class="table-responsive border rounded">
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">EDIT</th>
+				<th scope="col">USER TYPE</th>
+				<th scope="col">USER NAME</th>
+				<th scope="col">Login ID</th>
+				<th scope="col">EMAIL</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			{% if agents_lst %}
+			{% for i in range(0, agents_count) %}
+				<tr class="">
+					<td scope="row">
+						<button type="button" class="btn btn-sm btn-outline-info user_id" href="#" id="edit" value="{{ agents_lst[i]['id'] }}" data-bs-toggle="modal" data-bs-target="#User-Manage-Modal">EDIT</button>
+					</td>
+					<td>{{agents_lst[i]["type"]}}</td>
+					<td>{{agents_lst[i]["username"]}}</td>
+					<td>{{agents_lst[i]["login_id"]}}</td>
+					<td>{{agents_lst[i]["email"]}}</td>
+				</tr>
+			{% endfor %}
+			{% endif %}
+
+		</tbody>
+	</table>
+</div>
+
+<script>
+	$('.user_id').on('click', function () {
+		$("#result").text('');
+		$.post("/panel?mod=settings&act_=get_age_pro&user_id=" + $(this).val(), function (data) {
+			$(".modal-title").text("Editing User: " + data['username']);
+			$('#scp_id').val(data['id']);
+			$('#email').val(data['email']);
+			$('#fname').val(data['fname']);
+			$('#lname').val(data['lname']);
+			$('#loginID').val(data['login_id']);
+			$('#username').val(data['username']);
+
+			$('select').val(data['type']);
+			$('#crt_date').text(data['create_datetime']);
+			$('#last-login').text(data['last_login']);
+			$('#last-update').text(data['last_update']);
+		});
+	});
+</script>
+
+<!-- Modal Body -->
+<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+<div class="modal fade" id="User-Manage-Modal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="modalTitleId">Loading...</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<!-- method="POST" action="/panel?mod=agent_edit" -->
+				<form class="row g-3" id="agents-update-form">
+					<div class="col-12">
+						<div class="input-group">
+							<span class="input-group-text" id="email-label">Email</span>
+							<input type="text" class="form-control" id="email" name="email" value="" aria-describedby="email-label" required>
+						</div>
+					</div>
+
+					<div class="col-6">
+						<div class="input-group">
+							<span class="input-group-text" id="fname-label">First Name</span>
+							<input type="text" class="form-control" id="fname" name="fname" value="" aria-describedby="fname-label">
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="input-group">
+							<span class="input-group-text" id="lname-label">Last Name</span>
+							<input type="text" class="form-control" id="lname" name="lname" value="" aria-describedby="lname-label">
+						</div>
+					</div>
+
+					<div class="col-6">
+						<div class="input-group">
+							<span class="input-group-text" id="LoginID-label">Login ID</span>
+							<input type="text" class="form-control" id="loginID" name="loginID" value="" aria-describedby="LoginID-label" readonly required>
+						</div>
+					</div>
+					
+					<div class="col-6">
+						<div class="input-group">
+							<span class="input-group-text" id="dpname-label">Display Name</span>
+							<input type="text" class="form-control" id="username" name="username" value="" aria-describedby="dpname-label" required>
+						</div>
+					</div>
+
+					<div class="col-6">
+						<div class="input-group">
+							<span class="input-group-text" id="fname-label">ACCOUNT TYPE</span>
+							<select class="form-select form-select-sm form-control" name="ac_type" id="ac_type">
+								<option value="" selected disabled>Select one</option>
+								<option value="admin">admin</option>
+								<option value="agent">agent</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-6">
+						<label for="crt_date">CREATE DATE</label>
+						<div id="crt_date" class="form-text">xx/xx/xx</div>
+					</div>
+
+					<div class="col-6">
+						<label for="last-login">LAST LOGIN</label>
+						<div id="last-login" class="form-text">xx/xx/xx</div>
+					</div>
+
+					<div class="col-6">
+						<label for="last-update">LAST UPDATE</label>
+						<div id="last-update" class="form-text">xx/xx/xx</div>
+					</div>
+					
+					<div class="col-12">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+							<label class="form-check-label" for="invalidCheck">
+								Agree to terms and conditions
+							</label>
+							<div class="invalid-feedback">
+								You must agree before submitting.
+							</div>
+						</div>
+					</div>
+					<div class="col-12 d-md-flex justify-content-md-end">
+						
+						<span class="text-sm-center" id="result">{{ result }}</span>
+
+						<button class="btn btn-primary" type="button" id="agents_profile_upd">UPDATE USER</button>
+					</div>
+				</form>
+				
+			</div>
+			<div class="modal-footer">
+				<!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#agents_profile_upd').on('click', function() {
+		$.ajax({
+			type: "POST",
+			url: "/panel?mod=settings&act_=agent_edit",
+			contentType: 'application/json;charset=UTF-8',
+			data: JSON.stringify({
+				"login_id": $("#loginID").val(),
+				"type": $('#ac_type').val(),
+				"fname": $('#fname').val(),
+				"lname": $('#lname').val(),
+				'email': $('#email').val(),
+				'username': $('#username').val(),
+			}),
+			success: function (data){
+				if (data['status'] == 'UPDATE SUCCESS') {
+					$("#result").text(data['status']);
+				} else {
+					$("#result").text(data['status']);
+					$("#result").style({"color": "red"});
+				}
+			},
+			error: function () {},
+		});
+	});
+</script>
+
+<style>
+	#agents-update-form .input-group-text {
+		min-width: 8rem;
+	}
+</style>

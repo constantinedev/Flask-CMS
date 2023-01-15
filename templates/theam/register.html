@@ -1,0 +1,84 @@
+{% extends 'layout.html'%}
+
+{% if title %}
+<title>Simple Site - {{title}}</title>
+{% else %}
+<title>Simple Site</title>
+{% endif %}
+
+{% block main %}
+<form class="g-3 form-control" method="POST" id="reg-form">
+	<div class="input-group input-group-sm my-3 mb-4">
+		<label for="user-id" class="input-group-text">USER NAME</label>
+		<input type="text" class="form-control" id="user-id" name="UID" value="" required placeholder="LOGIN ID">
+		<div class="invalid-feedback">
+			Input Your Loing ID.
+		</div>
+		{%if username_err %}
+		<div>{{username_err}}</div>
+		{% endif %}
+	</div>
+
+	<div class="input-group input-group-sm mb-4">
+		<label for="validationCustom02" class="input-group-text">PASSWORD</label>
+		<input type="password" class="form-control" id="password" name="password" value="" required>
+		<div class="invalid-feedback">
+			Please Input Password.
+		</div>
+	</div>
+
+	<div class="input-group input-group-sm mb-4">
+		<label for="email" class="input-group-text">E-MAIL</label>
+		<input type="email" class="form-control" id="email" name="email" value="" required placeholder="email@example.com">
+		<div class="invalid-feedback">
+			Please Input Enail.
+		</div>
+		{%if email_err %}
+			<div>{{ email_err }}</div>
+		{% endif %}
+	</div>
+
+	<div class="input-group input-group-sm my-3 mb-4">
+		<label for="username" class="input-group-text">DISPLAY NAME</label>
+		<input type="text" class="form-control" id="username" name="username" value="" required placeholder="DISPLAY NAME">
+		<div class="invalid-feedback">
+			Input Your Loing ID.
+		</div>
+		{%if dpname_err %}
+			<div>{{ dpname_err }}</div>
+		{% endif %}
+	</div>
+
+	<div class="input-group input-group-sm mb-4">
+		<label for="fname" class="input-group-text">FIRST NAME</label>
+		<input type="text" class="form-control" id="fname" name="fname" value="">
+	</div>
+
+	<div class="input-group input-group-sm mb-4">
+		<label for="lname" class="input-group-text">LAST NAME</label>
+		<input type="text" class="form-control" id="lname" name="lname" value="">
+	</div>
+
+	<div class="form-check-sm">
+		<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+		<label class="form-check-label" for="invalidCheck">
+			Agree to terms and conditions
+		</label>
+		<div class="invalid-feedback">
+			You must agree before submitting.
+		</div>
+	</div>
+	
+	<div class="d-grid">
+		<button class="btn btn-outline" type="submit">REGIST ACCOUNT</button>
+		<span class="text-center">RETURN TO</span>
+		<a class="btn btn-sm btn-outline-primary" href="/login">LOGIN</a>
+	</div>
+</form>
+
+<styLe>
+	#reg-form .input-group-text {
+		min-width: 90px;
+	}
+</style>
+{% endblock main %}
