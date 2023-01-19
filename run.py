@@ -65,8 +65,8 @@ def panel():
     model_ = request.args.get('mod')
     if model_ == 'settings':
       return panel_api(pag)
-    elif model_ == "blogger": # BLOG plugin
-      return blog_api(pag)
+    # elif model_ == "blogger": # BLOG plugin
+    #   return blog_api(pag)
   
     return panel_api(pag)
       
@@ -78,11 +78,16 @@ def panel():
     model_ = request.args.get('mod')
     if model_ == 'settings':
       return panel_api(pag)
-    elif model_ == "blogger":  # BLOG plugin
-      return blog_api(pag)
+    # elif model_ == "blogger":  # BLOG plugin
+    #   return blog_api(pag)
     
     elif model_ == "imgupdload":
       return img_uploader()
+
+@app.route('/panel/blogger', methods=["GET", "POST"])
+@login_required
+def blogger_mod():
+  return blog_api()
 
 ### CMS PANEL API
 @app.route('/settings/<config>', methods=["GET", "POST"])

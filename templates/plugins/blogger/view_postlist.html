@@ -48,7 +48,7 @@
 				
 				<div class="modal-body">
 					<div class="container-fluid">
-						<form class="row g-3" method="POST" action="/panel?mod=blogger&act_=update_post">
+						<form class="row g-3" method="POST" action="/panel/blogger?mod=modify&act_=update_post">
 							<div class="input-group">
 								<span for="agent-id" class="input-group-text">AGENT</span>
 								<input type="text text-sm" class="form-control" id="agent-id" name="agent-id" value="{{current_user.dpName}}"
@@ -192,7 +192,7 @@
 
 <script>
 	$('.edit').on('click', function(){
-		$.get('/panel?mod=blogger&pag=post_review&id=' + $(this).val(), function (data){
+		$.get('/panel/blogger?pag=post_review&post_id=' + $(this).val(), function (data){
 			console.log(data);
 			$(".modal-title").text("EDIT: " + data['title']);
 			$("#agent-id").val(data['crt_agent']);
@@ -210,7 +210,7 @@
 	$('.del').on('click', function(){
 		$.ajax({
 			type: "POST",
-			url: "/panel?mod=blogger&act_=remove&id=" + $(this).val(),
+			url: "/panel/blogger?mod=modify&act_=remove&post_id=" + $(this).val(),
 			contentType: "application/json:charset=UT-8",
 			data: {
 				'id': $(this).val(),

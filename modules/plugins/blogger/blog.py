@@ -28,13 +28,13 @@ def blog_api():
   if request.method == "POST":
     ### POST REQUEST
     if mod == "modify":
-      if request.args.get('act_') == 'crt_newpost':
+      if act_ == 'crt_newpost':
         return post_create()
     
-      if request.args.get('act_') == 'update_post':
+      if act_ == 'update_post':
         return post_update()
       
-      if request.args.get('act_') == 'remove':
+      if act_ == 'remove':
         return remove_post()
   
   return render_template('admin/panel.html', title="PANEL", pag=pag, agents_lst=agents, agents_count=int(len(agents)))
@@ -118,7 +118,7 @@ def post_update():
   return redirect(url_for('blogger_mod', mod="blogger", pag="post_edit", title="POST UPDATE SUCCESS"))
 
 def remove_post():
-  post_id = request.args.get('id')
+  post_id = request.args.get('post_id')
   
   try:
     sqlite_utils.Database('data_db/blog.sqlite3')['post'].delete(int(post_id))
