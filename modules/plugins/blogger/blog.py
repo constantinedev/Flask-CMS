@@ -3,33 +3,46 @@ from sqlite_utils.utils import sqlite3
 from datetime import datetime as DT, timezone as TZ
 from flask import Flask, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
-from werkzeug.security import generate_password_hash, check_password_hash
 from system.setup import agent, login
 
-def blog_api(pag):  
-  ###GET REQUEST
-  if request.args.get('pag') == 'crt_newpost':
-    return get_create_info(pag)
+def blog_api():
+  pag = request.args.get('pag')
+  mod = request.args.get('mod')
+  act_ = request.args.get('act_')
   
-  if request.args.get('pag') == 'post_edit':
-    return post_lst(pag)
+  agents = []
+  for users_ in list(sqlite_utils.Database("db/admin.session")['agents'].rows):
+    agents.append(users_)
   
-  if request.args.get('pag') == 'post_review':
-    return post_review(request.args.get('id'))
+  if request.method == "GET":
+    ###GET REQUEST
+    if pag == 'crt_newpost':
+      return get_create_info(pag)
     
-  ### POST REQUEST
-  if request.args.get('act_') == 'crt_newpost':
-    return post_create()
+    if pag == 'post_edit':
+      return post_lst(pag)
+    
+    if pag == 'post_review':
+      return post_review(request.args.get('post_id'))
+    
+  if request.method == "POST":
+    ### POST REQUEST
+    if mod == "modify":
+      if request.args.get('act_') == 'crt_newpost':
+        return post_create()
+    
+      if request.args.get('act_') == 'update_post':
+        return post_update()
+      
+      if request.args.get('act_') == 'remove':
+        return remove_post()
   
-  if request.args.get('act_') == 'update_post':
-    return post_update()
-  
-  if request.args.get('act_') == 'remove':
-    return remove_post()
+  return render_template('admin/panel.html', title="PANEL", pag=pag, agents_lst=agents, agents_count=int(len(agents)))
 
 def get_create_info(pag):
   categorys_lst = []
   agents_lst = []
+  
   for categorys in list(sqlite_utils.Database("data_db/blog.sqlite3")['categories'].rows):
     categorys_lst.append(categorys)
   for agents in list(sqlite_utils.Database('db/admin.session')['vlogin'].rows):
@@ -37,9 +50,10 @@ def get_create_info(pag):
   return render_template('admin/panel.html', pag=pag, title="CREATE NEW POST", categorys_lst=categorys_lst, categorys_len=int(len(categorys_lst)), agents_lst=agents_lst, agents_len=int(len(agents_lst)))
 
 def post_lst(pag):
+  post_lst = []
   categorys_lst = []
   agents_lst = []
-  post_lst = []
+  
   for posts in list(sqlite_utils.Database('data_db/blog.sqlite3')['post'].rows):
     post_lst.append(posts)
   for categorys in list(sqlite_utils.Database("data_db/blog.sqlite3")['categories'].rows):
@@ -77,7 +91,7 @@ def post_create():
   except sqlite3.OperationalError as e:
     flash(f"!!!{e}!!!")
     
-  return redirect(url_for("panel", mod="blogger", pag='crt_newpost', title="CREATE POST"))
+  return redirect(url_for("blogger_mod", mod="blogger", pag='crt_newpost', title="CREATE POST"))
 
 
 def post_update():
@@ -98,12 +112,10 @@ def post_update():
   try:
     sqlite_utils.Database('data_db/blog.sqlite3')['post'].update(post_id, upd_post_data, alter=True)
     flash("POST UPDATE SECCUESS")
-    # return jsonify({"SUCCESS": "UPDATE COMPLET"})
   except sqlite3.OperationalError as e:
     flash(f"UPADTE ERROR: {e}")
   
-  return redirect(url_for('panel', mod="blogger", pag="post_edit", title="POST UPDATE SUCCESS"))
-
+  return redirect(url_for('blogger_mod', mod="blogger", pag="post_edit", title="POST UPDATE SUCCESS"))
 
 def remove_post():
   post_id = request.args.get('id')
