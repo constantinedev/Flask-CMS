@@ -94,7 +94,7 @@
 	$('#add_category_btn').on('click', function(){
 		$.ajax({
 			type: "POST",
-			url: "/panel?mod=settings&pag=categorys&acts_=add",
+			url: "/panel?mod=settings&pag=categorys_edit&acts_=add",
 			contentType: "application/json;charset=UTF-8",
 			data: JSON.stringify({
 				"name": $('#name').val(),

@@ -3,7 +3,6 @@ from sqlite_utils.utils import sqlite3
 from datetime import datetime as DT , timezone as TZ
 from flask import Flask, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
-from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.middleware.proxy_fix import ProxyFix
 from system.setup import login
 from system.panel import set_password, check_password, panel_api, register, sing_in, sing_out, img_uploader
@@ -57,32 +56,7 @@ def log_out():
 @app.route('/panel', methods=["GET", "POST"])
 @login_required
 def panel():
-  ### START THE API BY GET REQUEST API
-  # All the GET response function call on here.
-  # You make the direct link and method what you like.
-  if request.method == "GET":
-    pag = request.args.get("pag")
-    model_ = request.args.get('mod')
-    if model_ == 'settings':
-      return panel_api(pag)
-    # elif model_ == "blogger": # BLOG plugin
-    #   return blog_api(pag)
-  
-    return panel_api(pag)
-      
-  ### START THE API BY POST REQUEST API
-  # All the POST response function call on here.
-  # You make the direct link and method what you like.
-  if request.method == 'POST':
-    pag = request.args.get("pag")
-    model_ = request.args.get('mod')
-    if model_ == 'settings':
-      return panel_api(pag)
-    # elif model_ == "blogger":  # BLOG plugin
-    #   return blog_api(pag)
-    
-    elif model_ == "imgupdload":
-      return img_uploader()
+    return panel_api()
 
 @app.route('/panel/blogger', methods=["GET", "POST"])
 @login_required

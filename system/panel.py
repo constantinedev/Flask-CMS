@@ -76,44 +76,54 @@ def sing_out():
   return redirect('/')
 
 ### GET REQUEST RETURN
-def panel_api(pag):
-  
-  ### FROM GET REQUEST
-  if pag == "agent_manage":
-    agents = []
-    for users_ in list(sqlite_utils.Database("db/admin.session")['agents'].rows):
-      agents.append(users_)
-    return render_template('admin/panel.html', title="PANEL", pag=pag, agents_lst=agents, agents_count=int(len(agents)))
-
-  if pag == "categorys_edit":
-    categorys = []
-    act_ = request.args.get('act_')
-    if act_ == "act_list":
-      for row in list(sqlite_utils.Database('data_db/blog.sqlite3')['categories'].rows):
-        categorys.append(row)
-      return render_template("admin/panel.html", pag=pag, title='CATEGORY EDITOR', cat_lst=categorys, cat_len=int(len(categorys)))
-  
-    if act_ == "get":
-      cat_id = request.args.get("cat_id")
-      for row in list(sqlite_utils.Database('data_db/blog.sqlite3')['categories'].rows_where("id = :cat_id", {"cat_id": cat_id})):
-        categorys.append(row)
-      return jsonify(categorys[0])
-  
-  if pag == "categorys":
-    return categorys_edit()
-
-  ### FROM POST REQUEST
+def panel_api():
+  pag = request.args.get("pag")
+  model_ = request.args.get('mod')
   act_ = request.args.get('act_')
   
-  if act_ == 'profileupdate':
-    return profile_update_()
+  if request.method == "GET":
+    ### FROM GET REQUEST
+    if pag == "agent_manage":
+      agents = []
+      for users_ in list(sqlite_utils.Database("db/admin.session")['agents'].rows):
+        agents.append(users_)
+      return render_template('admin/panel.html', title="PANEL", pag=pag, agents_lst=agents, agents_count=int(len(agents)))
 
-  if act_ == 'get_age_pro':
-    userid = request.args.get('user_id')
-    return get_agents_profile(userid)
+    if pag == "categorys_edit":
+      categorys = []
+      act_ = request.args.get('act_')
+      if act_ == "act_list":
+        for row in list(sqlite_utils.Database('data_db/blog.sqlite3')['categories'].rows):
+          categorys.append(row)
+        return render_template("admin/panel.html", pag=pag, title='CATEGORY EDITOR', cat_lst=categorys, cat_len=int(len(categorys)))
+    
+      if act_ == "get":
+        cat_id = request.args.get("cat_id")
+        for row in list(sqlite_utils.Database('data_db/blog.sqlite3')['categories'].rows_where("id = :cat_id", {"cat_id": cat_id})):
+          categorys.append(row)
+        return jsonify(categorys[0])
+    
+    if pag == "categorys":
+      return categorys_edit()
 
-  if act_ == 'agent_edit':
-    return update_users()
+  if request.method == "POST":
+    ### FROM POST REQUEST
+    if model_ == "settings":
+      if pag == "categorys_edit":
+        return categorys_edit()
+      
+      if act_ == 'profileupdate':
+        return profile_update_()
+
+      if act_ == 'get_age_pro':
+        userid = request.args.get('user_id')
+        return get_agents_profile(userid)
+
+      if act_ == 'agent_edit':
+        return update_users()
+      
+    if model_ == "imgupdload":
+      return img_uploader()
   
   return render_template('admin/panel.html', title="PANEL", pag=pag)
 
