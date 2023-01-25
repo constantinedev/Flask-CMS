@@ -15,11 +15,10 @@ class setup_db:
     'last_login': str,
     'last_update': str,
   },
-    not_null=('login_id', 'pwd', 'email', 'username'),
+    not_null={'login_id', 'username', 'email', 'pwd'},
     pk="id",
     if_not_exists=True
   )
-
   sqlite_utils.Database('db/admin.session').create_view('vlogin', f"SELECT id, login_id, username, email, fname, lname FROM agents;", replace=True)
   
   ### Blogger DB
@@ -38,7 +37,7 @@ class setup_db:
     "last_update": str,
   },
     pk="id",
-    not_null=('id', 'author', 'title', 'content'),
+    not_null={'author', 'title', 'content', 'status', 'crt_agent'},
     if_not_exists=True
   )
   
@@ -50,10 +49,9 @@ class setup_db:
     "description": str,
   },
     pk="id",
-    not_null=('id', 'name', 'link'),
+    not_null={'name', 'link'},
     if_not_exists=True
   )
-  
   sqlite_utils.Database('data_db/blog.sqlite3')['categories'].create_index(["link", "name"], unique=True, if_not_exists=True)
   
   sqlite_utils.Database('data_db/blog.sqlite3')['tag'].create({
@@ -64,7 +62,7 @@ class setup_db:
     "name": str,
   },
     pk="id",
-    not_null=('id', 'name'),
+    not_null={'name', 'link'},
     if_not_exists=True
   )
 
@@ -97,5 +95,5 @@ def load_user(login_id):
     user_tok.fname = row['fname']
     user_tok.lname = row['lname']
     
-    # sqlite_utils.Database('db/admin.session')['agents'].update(int(row['id']), {"last_login": str(DT.now(TZ.utc))}, alter=True)
+    sqlite_utils.Database('db/admin.session')['agents'].update(int(row['id']), {"last_login": str(DT.now(TZ.utc))}, alter=True)
     return user_tok

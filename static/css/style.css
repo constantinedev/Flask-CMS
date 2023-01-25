@@ -21,3 +21,7 @@ body {
 	background-color: none;
 	/* border-top: .05rem solid #00ff00; */
 }
+
+.input-group-text {
+	min-width: 9rem;
+}

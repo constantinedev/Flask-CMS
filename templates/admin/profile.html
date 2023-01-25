@@ -63,6 +63,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-12 d-grid">
 		{% with flash_msg = get_flashed_messages() %}
 			{% if flash_msg[0] == "PROFILE UPDATE SECCESS" %}
@@ -75,10 +76,5 @@
 		{% endwith %}
 		<button class="btn btn-outline-info" type="submit">UPDATE PROFILE</button>
 	</div>
+	
 </form>
-
-<style>
-	#profile-form .input-group-text {
-		min-width: 9rem;
-	}
-</style>

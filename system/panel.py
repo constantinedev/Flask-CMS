@@ -54,13 +54,19 @@ def sing_in():
     return redirect('/panel')
       
   if request.method == 'POST':
-    login_id = request.form['username']
-    pwd = request.form['password']
-    if login_id is not None and check_password(request.form['username'], pwd):
+    if request.form['username'] is not None and check_password(request.form['username'], request.form['password']):
+      
       loginID = agent()
       loginID.id = request.form['username']
+      for row in sqlite_utils.Database('db/admin.session')['agents'].rows_where("login_id = :login_id", {"login_id": request.form['username']}):
+        loginID.agent_id = row['id']
+        loginID.login_id = request.form['username']
+        loginID.dpName = row['username']
+        loginID.email = row['email']
+        loginID.fname = row['fname']
+        loginID.lname = row['lname']
+        sqlite_utils.Database('db/admin.session')['agents'].update(int(row['id']), {"last_login": str(DT.now(TZ.utc))}, alter=True)
       login_user(loginID)
-      
       return redirect('/panel')
     else:
       return render_template('theam/login.html', pwd_err="Wrong Password OR Login ID")
@@ -135,15 +141,12 @@ def get_agents_profile(userid):
     return jsonify(asg_api)
 ###############################
 
-def profile_update_():  
-    old_pwd = request.form['old-password']
-    new_pwd = request.form['new-password']
-
-    if old_pwd is None or old_pwd == "":
+def profile_update_():
+    if request.form['old-password'] is None or request.form['old-password'] == "":
       return_log = 'No Password Inputed!'
       return render_template('admin/panel.html', title="PANEL", pag="profile", return_log=return_log)
 
-    if new_pwd is None :
+    if request.form['new-password'] is None:
       password_fix = request.form['new-password']
     else:
       password_fix = request.form['old-password']
