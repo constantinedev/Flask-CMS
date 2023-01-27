@@ -80,7 +80,7 @@ class agent(UserMixin):
     try:
       return str(self.id)
     except AttributeError:
-      raise NotImplementedError('No ID Find in system.`') from None
+      raise NotImplementedError('No ID Find in system. ') from None
   
 login = LoginManager()
 

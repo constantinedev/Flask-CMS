@@ -59,7 +59,7 @@
 		<input type="text" class="form-control" id="lname" name="lname" value="">
 	</div>
 
-	<div class="form-check-sm">
+	<div class="form-check-sm mb-4">
 		<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
 		<label class="form-check-label" for="invalidCheck">
 			Agree to terms and conditions
@@ -69,10 +69,13 @@
 		</div>
 	</div>
 	
-	<div class="d-grid">
-		<button class="btn btn-outline" type="submit">REGIST ACCOUNT</button>
+	<div class="text-center mb-3">
+		{%if result %}<span class="text-center"><strong style="color:red;">{{result}}</strong></span>{% endif %}
+		<button class="btn btn-outline-success" type="submit">REGIST ACCOUNT</button>
+	</div>
+	<div class="text-center">		
 		<span class="text-center">RETURN TO</span>
-		<a class="btn btn-sm btn-outline-primary" href="/login">LOGIN</a>
+		<a class="nav nav-link link-secondary" href="/login">LOGIN</a>
 	</div>
 </form>
 
