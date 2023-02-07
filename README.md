@@ -10,6 +10,11 @@ This is the following module we ued in this DEMO project.
 * sqlite utils
 * Tiny MCE v5 Editor
 
+We have add the CK-Editor into the demo.
+That meant it support all the JavaScript plugin for make your work in text/coding.
+We have stop the CK-Editor Upload path but we tag the example code from flask-ckeditor modules.
+I stop the secuitry test on here.
+
 For the basic This Demo will show you the basic secuirty login and, How to update the data with SQLite Database.
 What does it means? If you need the custom order, content this project developer for make a user require.
 We free out the SQLAlchemy to use the sqlite_utils to connect with the DB.
