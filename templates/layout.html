@@ -23,6 +23,8 @@
 
 	<!-- Custom JS File-->
 	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+	{{ ckeditor.load(pkg_type="full-all") }}
+	<script type="text/javascript" src="{{ url_for('static', filename='js/tinymce/tinymce.min.js') }}"></script>
 </head>
 
 <body>
@@ -59,6 +61,7 @@
 		{% endif %}
 	{% endblock main %}
 	<div class="fix-footer"></div>
+
 	</main>
 
 	<footer>
