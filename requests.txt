@@ -2,3 +2,5 @@ sqlite_utils
 werkzeug
 flask
 flask_login
+flask_ckeditor
+flask_wtf

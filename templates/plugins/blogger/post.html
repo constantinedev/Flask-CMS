@@ -61,14 +61,13 @@
 			<span for="post-title" class="input-group-text">POST TITLE* </span>
 			<input type="text" class="form-control" id="post-title" name="post-title" value="" placeholder="POST TITLE ...." required>
 		</div>
-		{{ ckeditor.create() }}
+		{{ ckeditor.create(name="ckeditor") }}
 	</div>
 
   <div class="input-group">
 	
 	<!-- Tiny Editor -->
 	<textarea class="tinymce" id="post" name="post-content" rows="25" placeholder="Input your post or pase your html...."></textarea>
-	<script type="text/javascript" src="{{ url_for('static', filename='js/tinymce/tinymce.min.js') }}"></script>
 	
   </div>
 	{% with status = get_flashed_messages() %}
