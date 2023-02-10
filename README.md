@@ -39,6 +39,8 @@ Support any browser with no plugin or cookies blocking.
    [Linux/Unix/OSX]
    python3 run.py
 6. We have use Tiny MCE Editor [Download](https://download.tiny.cloud/tinymce/community/tinymce_5.10.7_dev.zip?_ga=2.5061043.1812686262.1672891546-692894055.1672891546) and move the tinymce filder to Flask-CMS/js/
+7. If you expect to use the editor in Modal you should make your modal tag after class `data-focus="false" / dada-bs-foces="false"`
+*We have already enable the TincyMCE Editor Modal fix with javascript in `static/js/main.js` 
 
 ## First Time Setup
 
