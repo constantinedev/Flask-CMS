@@ -40,7 +40,7 @@ $(document).ready(function () {
       { text: "Python", value: "python" },
     ],
   });
-	document.addEventListener("focusin", (e) => {
+  document.addEventListener("focusin", (e) => {
     if (
       e.target.closest(
         ".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
@@ -48,6 +48,6 @@ $(document).ready(function () {
     ) {
       e.stopImmediatePropagation();
     }
-	});
+  });
 	
 });
