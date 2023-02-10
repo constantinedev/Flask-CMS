@@ -40,6 +40,7 @@ $(document).ready(function () {
       { text: "Python", value: "python" },
     ],
   });
+	
   document.addEventListener("focusin", (e) => {
     if (
       e.target.closest(
