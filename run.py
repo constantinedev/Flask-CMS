@@ -3,7 +3,7 @@ from sqlite_utils.utils import sqlite3
 from datetime import datetime as DT , timezone as TZ
 from flask import Flask, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
-from flask_ckeditor import CKEditor, upload_success, upload_fail
+from flask_ckeditor import CKEditor, upload_success, upload_fail, CKEditorField
 from werkzeug.middleware.proxy_fix import ProxyFix
 from system.setup import login
 from system.panel import set_password, check_password, panel_api, register, sing_in, sing_out, img_uploader
@@ -17,8 +17,8 @@ session.proxies['https'] = 'socks5h://localhost:9050'
 
 app = Flask(__name__)
 app.secret_key = b'82d52ae6cdbed60d2e6923b0b562f99adab07c6d6b57a55c5e2f4043ebde05d2'
-ckeditor = CKEditor(app)
 app.wsgi_app = ProxyFix(app.wsgi_app)
+ckeditor = CKEditor(app)
 app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
 app.config['CKEDITOR_FILE_UPLOADER'] = 'uploads'
 app.config['CKEDITOR_HEIGHT'] = 900
@@ -31,6 +31,18 @@ login.login_view = '/login'
 
 @app.route('/', methods=["GET", "POST"])
 def index():
+  if request.remote_addr == '127.0.0.1' or request.remote_addr == 'localhost':
+    pass
+  else:
+    sqlite_utils.Database('db/_sec.db')['req_rec'].insert({'ip': request.remote_addr, "user_agents": str(request.user_agent), "crt_date": str(DT.now())}, alter=True)
+    ip_recs =  list(sqlite_utils.Database('db/_sec.db')['req_rec'].rows_where("ip = ?"), [request.remote_addr])
+    count_recs = ip_recs.count()
+    if int(count_recs) < 100:
+      pass
+    else:
+      rm_recs = count_recs - 100
+      sqlite_utils.Database('db/_sec.db')['req_rec'].delete(where="data_colum > :rm_recs", rm_recs=rm_recs)
+      
   if request.method == 'GET':
     pag = request.args.get('pag')
     if pag is not None:
@@ -76,6 +88,7 @@ def user_conf(config):
       print('demo')
     return 'TEST Today' + str(DT.now())
 
+### ckEditor Upload example ***
 # @app.route('/files/<path:filename>')
 # def uploaded_files(filename):
 #     path = '/the/uploaded/directory'

@@ -1,4 +1,4 @@
-<div class="form-control border roinder">
+<div class="">
 	<!-- Button trigger modal -->
 	<div class="text text-end">
 		<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#add-category">ADD</button>
@@ -48,7 +48,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form class="row g-3"> 
+				<form class="row g-3" id="panels_forms">
 					<div class="input-group">
 						<span for="name" class="input-group-text">NAME</span>
 						<input type="text text-sm" class="form-control" id="name" name="name" value="" required>
@@ -123,7 +123,7 @@
 			</div>
 			<div class="modal-body">
 				<!-- action="/panel?mod=categorys&acts_=add" -->
-				<form class="row g-3"> 
+				<form class="row g-3" id="panels_forms"> 
 					<div class="input-group">
 						<span for="name" class="input-group-text">NAME</span>
 						<input type="text text-sm" class="form-control" id="name-update" name="name" value="" required>

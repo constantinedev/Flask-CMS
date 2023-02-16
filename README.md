@@ -16,7 +16,6 @@ We have stop the CK-Editor Upload path but we tag the example code from flask-ck
 I stop the secuitry test on here.<br>
 ![image](https://user-images.githubusercontent.com/1324252/217410498-87566f7c-4194-48b1-ae58-e1c332a90212.png)
 
-
 For the basic This Demo will show you the basic secuirty login and, How to update the data with SQLite Database.
 What does it means? If you need the custom order, content this project developer for make a user require.
 We free out the SQLAlchemy to use the sqlite_utils to connect with the DB.
@@ -38,7 +37,9 @@ Support any browser with no plugin or cookies blocking.
    py -3 run.py
    [Linux/Unix/OSX]
    python3 run.py
-6. We have use Tiny MCE Editor [Download](https://download.tiny.cloud/tinymce/community/tinymce_5.10.7_dev.zip?_ga=2.5061043.1812686262.1672891546-692894055.1672891546) and move the tinymce filder to Flask-CMS/js/
+6. We have use Tiny MCE Editor [Download](https://download.tiny.cloud/tinymce/community/tinymce_5.10.7_dev.zip?_ga=2.5061043.1812686262.1672891546-692894055.1672891546) and move the tinymce filder to Flask-CMS/status/js/tinymce/
+7. Supprt Multi text editor for example you can see the load data and update are complely well!
+8. Dark Mode 😄 Welcome Bootstrap v5.3 support the `data-bs-them` options for switching theme. We can custoum design all color theme and make it like a setting to save to user client account. :
 
 ## First Time Setup
 

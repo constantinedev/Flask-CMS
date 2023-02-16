@@ -1,4 +1,4 @@
-<form class="form-control row" method="POST" action="/panel?mod=settings&act_=profileupdate" id="profile-form">
+<form class="row" id="panels_forms" method="POST" action="/panel?mod=settings&act_=profileupdate" id="profile-form">
 
 	<div class="mb-3 my-3">
 		<div class="input-group" disabled>
@@ -16,28 +16,28 @@
 
 	<div class="mb-3">
 		<div class="input-group">
-			<label for="dpName" class=" input-group-text">Display Name</label>
+			<label for="dpName" class="input-group-text">Display Name</label>
 			<input type="text" class="form-control" name="dpName" id="dpName" aria-describedby="inputGroupPrepend" value="{{current_user.dpName}}" required>
 		</div>
 	</div>
 
 	<div class="mb-3">
 		<div class="input-group">
-			<label for="fname" class=" input-group-text">First Name</label>
+			<label for="fname" class="input-group-text">First Name</label>
 			<input type="text" class="form-control" name="fname" id="fname" aria-describedby="inputGroupPrepend" value="{{current_user.fname}}">
 		</div>
 	</div>
 
 	<div class="mb-3">
 		<div class="input-group">
-			<label for="lname" class=" input-group-text">List Name</label>
+			<label for="lname" class="input-group-text">List Name</label>
 			<input type="text" class="form-control" name="lname" id="lname" aria-describedby="inputGroupPrepend" value="{{current_user.lname}}">
 		</div>
 	</div>
 
 	<div class="mb-3">
 		<div class="input-group">
-			<label for="old-password" class=" input-group-text">Old Password</label>
+			<label for="old-password" class="input-group-text">Old Password</label>
 			<input type="password" class="form-control" name="old-password" id="old-password" aria-describedby="password_err" value="" required>
 		</div>
 		{% if return_log %}
@@ -47,7 +47,7 @@
 
 	<div class="mb-3">
 		<div class="input-group">
-			<label for="new-password" class=" input-group-text">New Password</label>
+			<label for="new-password" class="input-group-text">New Password</label>
 			<input type="password" class="form-control" name="new-password" id="new-password" aria-describedby="inputGroupPrepend" value="">
 		</div>
 	</div>

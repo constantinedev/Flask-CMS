@@ -37,7 +37,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="post_eritor" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="post_eritor" data-bs-backdrop="static" data-bs-focus="false" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
 	<div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" role="document">
 		<div class="modal-content">
 			
@@ -48,7 +48,7 @@
 				
 				<div class="modal-body">
 					<div class="container-fluid">
-						<form class="row g-3" method="POST" action="/panel/blogger?mod=modify&act_=update_post">
+						<form class="row g-3" id="panels_forms" method="POST" action="/panel/blogger?mod=modify&act_=update_post">
 							<div class="input-group">
 								<span for="agent-id" class="input-group-text">AGENT</span>
 								<input type="text text-sm" class="form-control" id="agent-id" name="agent-id" value="{{current_user.dpName}}"
@@ -113,14 +113,16 @@
 									<span for="post-title" class="input-group-text">POST TITLE* </span>
 									<input type="text" class="form-control" id="post-title" name="post-title" value="" placeholder="POST TITLE ...." required>
 								</div>
-								{{ ckeditor.create() }}
+								
 							</div>
-						
-							<div class="input-group">
-						
+							
+							<div class="my-3">
+								{{ ckeditor.create('post_content') }}
+							</div>
+
+							<div class="input-group">						
 								<!-- Tiny Editor -->
 								<textarea class="tinymce" id="post" name="post-content" rows="25" placeholder="Input your post or pase your html...."></textarea>
-								
 							</div>
 							{% with status = get_flashed_messages() %}
 							{% if status %}
@@ -168,9 +170,9 @@
 </div>
 
 <script>
-	$('.edit').on('click', function(){
+	$('.edit').on('click', function(){	
 		$.get('/panel/blogger?pag=post_review&post_id=' + $(this).val(), function (data){
-			console.log(data);
+			
 			$(".modal-title").text("EDIT: " + data['title']);
 			$("#agent-id").val(data['crt_agent']);
 			$('#author').val(data['author']);
@@ -179,6 +181,7 @@
 			
 			$('#publish-date').val(data['publish_date']);
 			$('#post-title').val(data['title']);
+			CKEDITOR.instances['post_content'].setData(data['content']);
 			tinymce.get("post").setContent(data['content']);
 			$('#upd_post_btn').val(data['id']);
 		});
