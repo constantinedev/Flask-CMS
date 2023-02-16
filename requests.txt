@@ -3,4 +3,8 @@ werkzeug
 flask
 flask_login
 flask_ckeditor
+<<<<<<< HEAD
 flask_wtf
+=======
+flask_wtf
+>>>>>>> 11ff31573497caa2414db78833b245250c28359e

@@ -37,6 +37,7 @@ $(document).ready(function () {
     ],
   });
 	
+<<<<<<< HEAD
   document.addEventListener("focusin", function (e) {
     if (e.target.closest(
       ".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
@@ -84,5 +85,16 @@ $(document).ready(function () {
       localStorage.setItem("darkMode", "disabled");
     }
   });
+=======
+  document.addEventListener("focusin", (e) => {
+    if (
+      e.target.closest(
+        ".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
+      ) !== null
+    ) {
+      e.stopImmediatePropagation();
+    }
+  });
+>>>>>>> b03eb0eaef9e9fce662613e724384e145dcf6fbd
 	
 });
