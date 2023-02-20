@@ -35,8 +35,8 @@ def index():
     pass
   else:
     sqlite_utils.Database('db/_sec.db')['req_rec'].insert({'ip': request.remote_addr, "user_agents": str(request.user_agent), "crt_date": str(DT.now())}, alter=True)
-    ip_recs =  list(sqlite_utils.Database('db/_sec.db')['req_rec'].rows_where("ip = ?"), [request.remote_addr])
-    count_recs = ip_recs.count()
+    ip_recs =  list(sqlite_utils.Database('db/_sec.db')['req_rec'].rows_where("ip = ?", [request.remote_addr]))
+    count_recs = len(ip_recs)
     if int(count_recs) < 100:
       pass
     else:

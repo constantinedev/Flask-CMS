@@ -19,7 +19,7 @@ $(document).ready(function () {
     },
     imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
     toolbar: "print insertfile undo redo | styleselect | bold italic | code alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | export preview media fullpage | forecolor backcolor emoticons | codesample",
-    contextmenu: "print template undo redo powerpaste | table inserttable | lists link image cell row column deletetable",
+    contextmenu: "print template undo redo powerpaste styleselect | table inserttable | lists link image cell row column deletetable",
     save_enablewhendirty: true,
     file_picker_types: "file image media",
     images_upload_url: "/panel?mod=imgupload",
@@ -37,7 +37,7 @@ $(document).ready(function () {
     ],
   });
 	
-<<<<<<< HEAD
+
   document.addEventListener("focusin", function (e) {
     if (e.target.closest(
       ".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
@@ -85,16 +85,5 @@ $(document).ready(function () {
       localStorage.setItem("darkMode", "disabled");
     }
   });
-=======
-  document.addEventListener("focusin", (e) => {
-    if (
-      e.target.closest(
-        ".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
-      ) !== null
-    ) {
-      e.stopImmediatePropagation();
-    }
-  });
->>>>>>> b03eb0eaef9e9fce662613e724384e145dcf6fbd
 	
 });
