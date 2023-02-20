@@ -41,12 +41,31 @@ class setup_db:
     if_not_exists=True
   )
   
+  sqlite_utils.Database('data_db/blog.sqlite3')['blog_info'].create({
+    "siteurl": str,
+    "home": str,
+    "blogname": str,
+    "blogdescription": str,
+    "start_of_week": str,
+    "mailserver_url": str,
+  },
+  # not_null={'author', 'title', 'content', 'status', 'crt_agent'},
+    if_not_exists=True
+  )
+  
   sqlite_utils.Database('data_db/blog.sqlite3')['categories'].create({
     "id": int,
     "name": str,
+    "alias": str,
     "link": str,
+    "type": str,
+    "description": str,
+    "params": str,
     "count": str,
     "description": str,
+    "laste_edit": str,
+    "last_update": str,
+    "create_date": str,
   },
     pk="id",
     not_null={'name', 'link'},
