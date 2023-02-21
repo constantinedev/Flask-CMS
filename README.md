@@ -37,15 +37,14 @@ Support any browser with no plugin or cookies blocking.
    py -3 run.py
    [Linux/Unix/OSX]
    python3 run.py
-<<<<<<< HEAD
 6. We have use Tiny MCE Editor [Download](https://download.tiny.cloud/tinymce/community/tinymce_5.10.7_dev.zip?_ga=2.5061043.1812686262.1672891546-692894055.1672891546) and move the tinymce filder to Flask-CMS/status/js/tinymce/
 7. Supprt Multi text editor for example you can see the load data and update are complely well!
 8. Dark Mode 😄 Welcome Bootstrap v5.3 support the `data-bs-them` options for switching theme. We can custoum design all color theme and make it like a setting to save to user client account. :
-=======
-6. We have use Tiny MCE Editor [Download](https://download.tiny.cloud/tinymce/community/tinymce_5.10.7_dev.zip?_ga=2.5061043.1812686262.1672891546-692894055.1672891546) and move the tinymce filder to Flask-CMS/js/
-7. If you expect to use the editor in Modal you should make your modal tag after class `data-focus="false" / dada-bs-foces="false"`
-*We have already enable the TincyMCE Editor Modal fix with javascript in `static/js/main.js` 
->>>>>>> b03eb0eaef9e9fce662613e724384e145dcf6fbd
+   ==============================================================================================================================================================================================
+9. We have use Tiny MCE Editor [Download](https://download.tiny.cloud/tinymce/community/tinymce_5.10.7_dev.zip?_ga=2.5061043.1812686262.1672891546-692894055.1672891546) and move the tinymce filder to Flask-CMS/js/
+10. If you expect to use the editor in Modal you should make your modal tag after class `data-focus="false" / dada-bs-foces="false"`
+    *We have already enable the TincyMCE Editor Modal fix with javascript in `static/js/main.js`
+11. Updat the basic blog database for ready the multi bolg system.
 
 ## First Time Setup
 

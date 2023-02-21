@@ -1,6 +1,14 @@
+pip
+six
+tox
+pillow
+numpy
+requests
 sqlite_utils
 werkzeug
 flask
 flask_login
 flask_ckeditor
-flask_wtf
+flask_WTF
+pgpy
+pyopenssl==22.1.0
