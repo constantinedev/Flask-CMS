@@ -10,16 +10,18 @@ $(document).ready(function () {
     width: "100%",
     min_height: 500,
     plugins: [
-      "export advlist autolink link linkchecker image imagetools importcss lists charmap print preview hr anchor pagebreak spellchecker",
-      "searchreplace wordcount visualblocks visualchars advcode code fullscreen insertdatetime media mediaembed nonbreaking advtable",
+      "export advlist autolink link linkchecker image imagetools importcss lists charmap print preview hr anchor pagebreak spellchecker styleselect",
+      "searchreplace wordcount visualblocks visualchars advcode code fullscreen insertdatetime media mediaembed nonbreaking advtable fontsize",
       "save table contextmenu directionality formatpainter pageembed template paste textcolor codesample quickbars powerpaste casechange textpattern",
     ],
     mobile: {
-      plugins: "export advlist autolink link linkchecker image imagetools importcss lists charmap print preview hr anchor pagebreak spellchecker searchreplace wordcount visualblocks visualchars advcode code fullscreen insertdatetime media mediaembed nonbreaking advtable save table contextmenu directionality formatpainter pageembed template paste textcolor codesample quickbars powerpaste casechange textpattern",
+      plugins: "export advlist autolink link linkchecker image imagetools importcss styleselect lists charmap print fontsize preview hr anchor pagebreak spellchecker searchreplace wordcount visualblocks visualchars advcode code fullscreen insertdatetime media mediaembed nonbreaking advtable save table contextmenu directionality formatpainter pageembed template paste textcolor codesample quickbars powerpaste casechange textpattern",
     },
     imagetools_toolbar: "rotateleft rotateright | flipv fliph | editimage imageoptions",
-    toolbar: "print insertfile undo redo | styleselect | bold italic | code alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | export preview media fullpage | forecolor backcolor emoticons | codesample",
-    contextmenu: "print template undo redo powerpaste styleselect | table inserttable | lists link image cell row column deletetable",
+    toolbar: "print insertfile undo redo | formatselect fontselect fontsizeselect | bold italic | code alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | export preview media fullpage | forecolor backcolor emoticons | codesample",
+    contextmenu: "print template undo redo powerpaste formatselect fontselect fontsizeselect | code alignleft aligncenter alignright alignjustify | table inserttable | lists link image cell row column deletetable",
+    fontsize_formats: "6pt 7pt 8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt",
+
     save_enablewhendirty: true,
     file_picker_types: "file image media",
     images_upload_url: "/panel?mod=imgupload",
@@ -37,7 +39,6 @@ $(document).ready(function () {
     ],
   });
 	
-
   document.addEventListener("focusin", function (e) {
     if (e.target.closest(
       ".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
