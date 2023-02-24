@@ -5,6 +5,7 @@ pillow
 numpy
 requests
 sqlite_utils
+matplotlib
 werkzeug
 flask
 flask_login
