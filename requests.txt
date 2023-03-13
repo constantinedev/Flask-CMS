@@ -13,3 +13,6 @@ flask_ckeditor
 flask_WTF
 pgpy
 pyopenssl==22.1.0
+SQLAlchemy
+pymysql
+psycopg2
