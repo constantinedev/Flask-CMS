@@ -16,3 +16,6 @@ pyopenssl==22.1.0
 SQLAlchemy
 pymysql
 psycopg2
+pandas
+plotly
+pytz
