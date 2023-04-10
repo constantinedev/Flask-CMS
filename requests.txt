@@ -15,7 +15,7 @@ pgpy
 pyopenssl==22.1.0
 SQLAlchemy
 pymysql
-psycopg2
-pandas
-plotly
 pytz
+
+#PostgreSQL support remove the # of following line
+#psycopg2
