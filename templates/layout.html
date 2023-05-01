@@ -40,7 +40,7 @@
 
 <body>
 	{% if current_user.is_authenticated %}
-	<nav class="navbar navbar-expand-sm text-light" >
+	<nav class="navbar navbar-expand-sm bg-dark text-light" data-bs-theme="dark">
 		<div class="form-check form-switch ms-2 mt-2 me-2">
 			<label class="form-check-label" for="lightSwitch">
 				<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
@@ -61,7 +61,7 @@
 		</div>
 	</nav>
 	{% else %}
-	<nav class="navbar navbar-expand-sm text-light" >
+	<nav class="navbar navbar-expand-sm bg-dark text-light" data-bs-theme="dark">
 		<div class="form-check form-switch ms-2 mt-2 me-2">
 			<label class="form-check-label" for="lightSwitch">
 				<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
