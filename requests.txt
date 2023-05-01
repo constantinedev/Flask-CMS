@@ -16,6 +16,7 @@ pyopenssl==22.1.0
 SQLAlchemy
 pymysql
 pytz
+pycountry
 
 #PostgreSQL support remove the # of following line
 #psycopg2
