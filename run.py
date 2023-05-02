@@ -82,6 +82,7 @@ def blogger_mod():
 
 ### CMS PANEL API
 @app.route('/settings/<config>', methods=["GET", "POST"])
+@login_required
 def user_conf(config):
   if request.method == "POST":
     if config == 'update_profile':

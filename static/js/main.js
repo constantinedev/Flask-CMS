@@ -111,7 +111,6 @@ $(document).ready(function () {
     toolbar: "print insertfile undo redo | formatselect fontselect fontsizeselect | bold italic | code alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | export preview media fullpage | forecolor backcolor emoticons | codesample",
     contextmenu: "print template undo redo powerpaste formatselect fontselect fontsizeselect | code alignleft aligncenter alignright alignjustify | table inserttable | lists link image cell row column deletetable",
     fontsize_formats: "6pt 7pt 8pt 9pt 10pt 11pt 12pt 14pt 16pt 18pt 20pt 22pt 24pt",
-
     save_enablewhendirty: true,
     file_picker_types: "file image media",
     images_upload_url: "/panel?mod=imgupload",
@@ -172,6 +171,7 @@ $(document).ready(function () {
   if (darkMode === "enabled") {
     document.body.classList.add("dark-mode");
   }
+
   document.querySelector(".form-switch").addEventListener("click", function () {
     // Toggle the "dark-mode" class on the body
     document.body.classList.toggle("dark-mode");
@@ -183,5 +183,37 @@ $(document).ready(function () {
       localStorage.setItem("darkMode", "disabled");
     }
   });
+
+  ///TIME FUNCTION
+  let now = new Date();
+	let tZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+	// let rec_date = new Date(src_date);
+	var tzOffset = now.getTimezoneOffset();
+	var tzOffsetStr = (tzOffset > 0 ? '-' : '+') +
+		('00' + Math.abs(Math.floor(tzOffset / 60))).slice(-2) + ':' +
+		('00' + Math.abs(tzOffset % 60)).slice(-2);
+	var datetimeStr = now.toISOString() + tzOffsetStr;
 	
+	function javaClock(callback) {
+		setInterval(function () {
+			var data = new Date();
+			callback(data);
+		}, 1000);
+	};
+
+	javaClock(function (time) {
+		let ISODatetime = time.toISOString();
+		var options = {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric",
+			hour: "2-digit",
+			hour12: true,
+			timeZoneName: "short",
+			minute: "numeric",
+			second: "numeric",
+		};
+		$("#live_clock").text("(" + tZ + ") " + time.toLocaleString("en-US", options));
+	});
+
 });
