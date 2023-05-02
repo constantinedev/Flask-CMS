@@ -21,3 +21,10 @@
 		</ul>
 	</div>
 </nav>
+<div class="content-guest"></div>
+
+<script>
+	$(document).ready(function(){
+		$('.content-guest').load('{{ url_for("static", filename="htm/content.html") }}');
+	});
+</script>
