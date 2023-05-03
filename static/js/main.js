@@ -1,11 +1,11 @@
-$(document).ready(function () {	
-  $("main").addClass("container-xxl");
+$(document).ready(function () {
+	
+	$("main").addClass("container-xxl");
 
 	$("header").load('static/htm/header.html');
 	$("footer").load("static/htm/footer.html");
 	
-  
-	// Check if geolocation is supported by the browser
+  // Check if geolocation is supported by the browser
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition);
 	} else {
@@ -44,7 +44,7 @@ $(document).ready(function () {
 		};
     $("#live_clock").text("(" + tZ + ") " + time.toLocaleString("en-US", options));
   });
-  
+
   ///TIME Function convert datetime to ISOString
   // let now_clin = new Date();
 	// var isoDT = now_clin.toISOString();
@@ -174,6 +174,6 @@ $(document).ready(function () {
     } else {
       localStorage.setItem("darkMode", "disabled");
     }
-	});
-	
+  });
+
 });
