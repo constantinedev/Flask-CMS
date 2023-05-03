@@ -18,11 +18,8 @@ SQLAlchemy
 pymysql
 pytz
 pycountry
-<<<<<<< HEAD
 sip
 lxml
-=======
 
 #PostgreSQL support remove the # of following line
 #psycopg2
->>>>>>> cfd2f84aab5dd080520cd1e619ce362c07b8665b

@@ -128,14 +128,6 @@ $(document).ready(function () {
     ],
   });
 	
-  document.addEventListener("focusin", function (e) {
-    if (e.target.closest(
-      ".tox-tinymce-aux, .moxman-window, .tam-assetmanager-root"
-    ) !== null) {
-      e.stopImmediatePropagation();
-    }
-  });
-
   // Example starter JavaScript for disabling form submissions if there are invalid fields
 	(function () {
 		'use strict';
@@ -182,38 +174,6 @@ $(document).ready(function () {
     } else {
       localStorage.setItem("darkMode", "disabled");
     }
-  });
-
-  ///TIME FUNCTION
-  let now = new Date();
-	let tZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
-	// let rec_date = new Date(src_date);
-	var tzOffset = now.getTimezoneOffset();
-	var tzOffsetStr = (tzOffset > 0 ? '-' : '+') +
-		('00' + Math.abs(Math.floor(tzOffset / 60))).slice(-2) + ':' +
-		('00' + Math.abs(tzOffset % 60)).slice(-2);
-	var datetimeStr = now.toISOString() + tzOffsetStr;
-	
-	function javaClock(callback) {
-		setInterval(function () {
-			var data = new Date();
-			callback(data);
-		}, 1000);
-	};
-
-	javaClock(function (time) {
-		let ISODatetime = time.toISOString();
-		var options = {
-			day: "2-digit",
-			month: "2-digit",
-			year: "numeric",
-			hour: "2-digit",
-			hour12: true,
-			timeZoneName: "short",
-			minute: "numeric",
-			second: "numeric",
-		};
-		$("#live_clock").text("(" + tZ + ") " + time.toLocaleString("en-US", options));
 	});
-
+	
 });
