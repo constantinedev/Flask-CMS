@@ -146,11 +146,10 @@ def profile_update_():
       return_log = 'No Password Inputed!'
       return render_template('admin/panel.html', title="PANEL", pag="profile", return_log=return_log)
 
-    if request.form['new-password'] is None:
-      password_fix = request.form['new-password']
+    if request.form['new-password'] == "" or request.form['new-password'] is None:
+      password_fix = request.form['old-password']      
     else:
-      password_fix = request.form['old-password']
-
+      password_fix = request.form['new-password']
     if check_password(request.form['loginID'], request.form['old-password']):
       prof_upd_reg = {
         # "login_id": request.form['loginID'],

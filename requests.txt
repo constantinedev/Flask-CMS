@@ -9,6 +9,7 @@ matplotlib
 werkzeug
 importlib
 flask
+Blueprint
 flask_login
 flask_ckeditor
 flask_WTF
