@@ -89,7 +89,7 @@ def user_conf(config):
       print('demo')
     return 'TEST Today' + str(DT.now())
 
-@app.route('/dashbaord', methods=["GET", "POST"])
+@app.route('/dashboard', methods=["GET", "POST"])
 @login_required
 def dashboard():
   return page_loader()
