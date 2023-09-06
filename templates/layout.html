@@ -60,6 +60,7 @@
 					<a class="btn btn-sm btn-danger" type="button" href="/logout">LOG OUT</a>
 					{% else %}
 					<a class="btn btn-sm btn-primary" type="button" href="/login">LOG IN</a>
+					{% endif %}
 				</div>
 			</div>
 		</div>
@@ -73,13 +74,14 @@
 
 	<main>
 	{% block main %}
+		
 		<!-- place content here -->
 		{% if current_user.is_authenticated %}
-			<div class="content" id="content" name="content">
+		<div class="content" id="content" name="content"></div>
 			{% if pag=="home" %}
 				{% include 'theam/home.html' %}
 			{% endif %}
-			</div>
+		</div>
 		{% else %}
 			<div class="content" id="content" name="content"></div>
 			<script>
@@ -88,6 +90,7 @@
 				});
 			</script>
 		{% endif %}
+
 	{% endblock main %}
 	<div class="fix-footer" style="display: none;"></div>
 
