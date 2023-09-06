@@ -1,5 +1,4 @@
 import re, os, io, json, sqlite_utils, requests, logging, pytz
-from sqlite_utils.utils import sqlite3
 from datetime import datetime as DT , timezone as TZ
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
@@ -9,6 +8,7 @@ from system.setup import login
 from system.panel import set_password, check_password, panel_api, register, sing_in, sing_out, img_uploader
 
 from modules.plugins.blogger.blog import blog_api
+from modules.plugins.dashboard.dashboard_api import page_loader
 
 session = requests.session()
 session.proxies = {}
@@ -88,6 +88,11 @@ def user_conf(config):
     if config == 'update_profile':
       print('demo')
     return 'TEST Today' + str(DT.now())
+
+@app.route('/dashbaord', methods=["GET", "POST"])
+@login_required
+def dashboard():
+  return page_loader()
 
 ### ckEditor Upload example ***
 # @app.route('/files/<path:filename>')
