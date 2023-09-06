@@ -16,7 +16,7 @@ session.proxies['http'] = 'socks5h://localhost:9050'
 session.proxies['https'] = 'socks5h://localhost:9050'
 
 app = Flask(__name__)
-app.secret_key = b'82d52ae6cdbed60d2e6923b0b562f99adab07c6d6b57a55c5e2f4043ebde05d2'
+app.secret_key = b'82d52ae6cdbed6a5s9c15s19a5sc9a5s12f4043ebde05d2'
 app.wsgi_app = ProxyFix(app.wsgi_app)
 ckeditor = CKEditor(app)
 app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
