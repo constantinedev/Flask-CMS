@@ -94,9 +94,11 @@
 	{% block main %}
 		<!-- place content here -->
 		{% if current_user.is_authenticated %}
+			<div class="content" id="content" name="content">
 			{% if pag=="home" %}
 				{% include 'theam/home.html' %}
 			{% endif %}
+			</div>
 		{% else %}
 			<div class="content" id="content" name="content"></div>
 			<script>
