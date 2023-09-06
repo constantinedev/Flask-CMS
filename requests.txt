@@ -1,6 +1,7 @@
 pip
 six
 tox
+wheel
 pillow
 numpy
 requests
@@ -8,8 +9,9 @@ sqlite_utils
 matplotlib
 werkzeug
 importlib
-flask
 Blueprint
+flask
+flask_admin
 flask_login
 flask_ckeditor
 flask_WTF
