@@ -77,9 +77,11 @@
 		
 		<!-- place content here -->
 		{% if current_user.is_authenticated %}
-		<div class="content" id="content" name="content"></div>
+		<div class="content" id="content" name="content">
 			{% if pag=="home" and pag == "" %}
 				{% include 'theam/home.html' %}
+			{% elif pag=="dashboard" %}
+				{% include 'plugins/dashboard/dash00.htm' %}
 			{% endif %}
 		</div>
 		{% else %}
