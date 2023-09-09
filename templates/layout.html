@@ -51,7 +51,11 @@
 			<input class="form-check-input" type="checkbox" id="darkSwitch" />
 		</div>
 		<div class="container-fluid">
+			{% if current_user.is_authenticated %}
 			<span class="navbar-brand">Welcome {{ current_user.dpName }}</span>
+			{% else %}
+			<span class="navbar-brand">Welcome</span>
+			{% endif %}
 			<div class="d-flex">				
 				<div class="btn-group" role="group">
 					{% if current_user.is_authenticated %}
