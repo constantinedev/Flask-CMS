@@ -4,4 +4,4 @@ from flask import Flask, Blueprint, request, make_response, Response, jsonify, r
 
 def page_loader():
   if request.method == "GET":
-    return render_template('plugins/dashboard/dash00.htm', pag="dsahboard", title="Dashboard")
+    return render_template('plugins/dashboard/dash00.htm', pag="dashboard", title="Dashboard")
