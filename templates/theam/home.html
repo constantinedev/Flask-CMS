@@ -17,14 +17,10 @@
 
 {% if current_user.is_authenticated %}
 	<script>
-		$(document).ready(function(){
-			$('.content').load("{{ url_for('static', filename='htm/content.html') }}");
-		});
+		$('.content').load("{{ url_for('static', filename='htm/content.html') }}");
 	</script>
 {% else %}
 	<script>
-		$(document).ready(function(){
-			$('.content').load("{{ url_for('static', filename='htm/index.html') }}");
-		});
+		$('.content').load("{{ url_for('static', filename='htm/index.html') }}");
 	</script>
 {% endif %}
