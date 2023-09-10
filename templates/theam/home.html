@@ -16,14 +16,12 @@
 </div>
 
 {% if current_user.is_authenticated %}
-	<div class="content" name="content"></div>
 	<script>
 		$(document).ready(function(){
 			$('.content').load("{{ url_for('static', filename='htm/content.html') }}");
 		});
 	</script>
 {% else %}
-	<div class="content" name="content"></div>
 	<script>
 		$(document).ready(function(){
 			$('.content').load("{{ url_for('static', filename='htm/index.html') }}");
