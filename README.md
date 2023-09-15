@@ -21,6 +21,10 @@ Now you can create and setup your free code free API, easy convert and display w
 Free for Open!!!
 ![image](https://user-images.githubusercontent.com/1324252/217410498-87566f7c-4194-48b1-ae58-e1c332a90212.png)
 
+### !!!NEW!!! Dashbaord & Nav For FREE!<br>
+![image](https://github.com/constantinedev/Flask-CMS/assets/1324252/6bb8772e-3928-4eed-8e97-de18c3a1b6d8)
+
+
 For the basic This Demo will show you the basic secuirty login and, How to update the data with SQLite Database.
 What does it means? If you need the custom order, content this project developer for make a user require.
 We free out the SQLAlchemy to use the sqlite_utils to connect with the DB.
