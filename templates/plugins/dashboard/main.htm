@@ -7,8 +7,8 @@
 		height: 100%;
 		width: 60px;
 		/* Initial width when not hovered */
-		position: fixed;
 		z-index: 1;
+    top: 0;
 		left: 0;
 		background-color: #f8f9fa;
 		/* Change this to your desired background color */
@@ -20,7 +20,7 @@
 	}
 
 	.sidenav:hover {
-		width: 250px;
+		width: 240px;
 		/* Expanded width on hover */
 	}
 
@@ -45,35 +45,39 @@
 	}
 </style>
 <div class="row">
-	<div class="sidenav flex-column  bg-body-tertiary" style="min-width:60px; height:100vh;">
-		<a href="/dashboard?pag=dashboard" class="nav-link border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
-			<i class="bi bi-house"></i>
-		</a>
-		<a href="#" name="dash00" class="nav-link py-2 border-bottom rounded-1" aria-current="page" data-bs-toggle="tooltip"  aria-label="Home" data-bs-original-title="Home">
-			<i class="bi bi-speedometer"></i>
-		</a>
-		<a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
-			<i class="bi bi-calendar-date"></i>
-		</a>
-		<a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
-			<i class="bi bi-table"></i>
-		</a>
-		<a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
-			<i class="bi bi-grid-fill"></i>
-		</a>
-		<a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
-			<i class="bi bi-person-circle"></i>
-		</a> 
-	</div>
-
-	<!-- Page content -->
-	<div class="dash-view"></div>
+  <div class="col-auto">
+    <div class="sidenav flex-column bg-body-tertiary" style="min-width:60px; height:100vh;">
+      <a href="/dashboard?pag=dashboard" class="nav-link border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+        <i class="bi bi-house"></i>
+      </a>
+      <a href="#" name="dash00" class="nav-link py-2 border-bottom rounded-1" aria-current="page" data-bs-toggle="tooltip"  aria-label="Home" data-bs-original-title="Home">
+        <i class="bi bi-speedometer"></i>
+      </a>
+      <a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
+        <i class="bi bi-calendar-date"></i>
+      </a>
+      <a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
+        <i class="bi bi-table"></i>
+      </a>
+      <a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
+        <i class="bi bi-grid-fill"></i>
+      </a>
+      <a href="#" class="nav-link py-2 border-bottom rounded-1" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
+        <i class="bi bi-person-circle"></i>
+      </a> 
+    </div>
+  </div>
+  
+  <div class="col">
+    <!-- Page content -->
+    <div class="dashx" name="dashx"></div>
+  </div>
 
 </div>
 <script>
-	$('.dash-view').load("{{ url_for('static', filename='htm/tools/news_rec.htm') }}");
+	$('[name="dashx"]').load("{{ url_for('static', filename='htm/src/tmp.htm') }}");
 	$('[name="dash00"]').on('click', function(){
-		$('.dash-view').load("{{ url_for('static', filename='htm/tools/news_rec.htm') }}");
+		alert('replace your jaavscreipt on this alert.');
 	});
 </script>
 
