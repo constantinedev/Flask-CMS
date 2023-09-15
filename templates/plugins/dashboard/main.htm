@@ -4,12 +4,11 @@
 <style>
 	/* Add custom CSS for the Sidenav */
 	.sidenav {
-    position: fixed;
 		height: 100%;
 		width: 60px;
 		/* Initial width when not hovered */
 		z-index: 1;
-    top: 1;
+    top: 0;
 		left: 0;
 		background-color: #f8f9fa;
 		/* Change this to your desired background color */
@@ -38,17 +37,17 @@
 		/* Change this to your desired hover color */
 	}
 
-	.dashx {
+	.dash-view {
 		position: fixed;
 		left: 55px;
-		
+		max-width: 97%;
 		padding: 20px;
 	}
 </style>
 <div class="row">
   <div class="col-auto">
-    <div class="sidenav flex-column bg-body-tertiary" style="min-width:60px; ">
-      <a href="/dashboard" class="nav-link border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+    <div class="sidenav flex-column bg-body-tertiary" style="min-width:60px;">
+      <a href="/dashboard?pag=dashboard" class="nav-link border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
         <i class="bi bi-house"></i>
       </a>
       <a href="#" name="dash00" class="nav-link py-2 border-bottom rounded-1" aria-current="page" data-bs-toggle="tooltip"  aria-label="Home" data-bs-original-title="Home">
