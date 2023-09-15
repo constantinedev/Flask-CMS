@@ -1,418 +1,202 @@
-<!doctype html>
-<html lang="en">
+<header>
+  <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94" role="img">
+        <title>Bootstrap</title>
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+          fill="currentColor"></path>
+      </svg>
+      <span class="fs-4">Pricing example</span>
+    </a>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.72.0">
-    <title>Blog Template · Bootstrap</title>
+    <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Features</a>
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Enterprise</a>
+      <a class="me-3 py-2 link-body-emphasis text-decoration-none" href="#">Support</a>
+      <a class="py-2 link-body-emphasis text-decoration-none" href="#">Pricing</a>
+    </nav>
+  </div>
 
-    <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/blog/">
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal text-body-emphasis">Pricing</h1>
+    <p class="fs-5 text-body-secondary">Quickly build an effective pricing table for your potential customers with this
+      Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
+  </div>
+</header>
 
-
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
-        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
-        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <style>
-        /* stylelint-disable selector-list-comma-newline-after */
-
-        .blog-header {
-            line-height: 1;
-            border-bottom: 1px solid #e5e5e5;
-        }
-
-        .blog-header-logo {
-            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-            font-size: 2.25rem;
-        }
-
-        .blog-header-logo:hover {
-            text-decoration: none;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-        }
-
-        .display-4 {
-            font-size: 2.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .display-4 {
-                font-size: 3rem;
-            }
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .nav-scroller .nav-link {
-            padding-top: .75rem;
-            padding-bottom: .75rem;
-            font-size: .875rem;
-        }
-
-        .card-img-right {
-            height: 100%;
-            border-radius: 0 3px 3px 0;
-        }
-
-        .flex-auto {
-            flex: 0 0 auto;
-        }
-
-        .h-250 {
-            height: 250px;
-        }
-
-        @media (min-width: 768px) {
-            .h-md-250 {
-                height: 250px;
-            }
-        }
-
-        /* Pagination */
-        .blog-pagination {
-            margin-bottom: 4rem;
-        }
-
-        .blog-pagination>.btn {
-            border-radius: 2rem;
-        }
-
-        /*
-        * Blog posts
-        */
-        .blog-post {
-            margin-bottom: 4rem;
-        }
-
-        .blog-post-title {
-            margin-bottom: .25rem;
-            font-size: 2.5rem;
-        }
-
-        .blog-post-meta {
-            margin-bottom: 1.25rem;
-            color: #727272;
-        }
-
-        /*
-        * Footer
-        */
-        .blog-footer {
-            padding: 2.5rem 0;
-            color: #727272;
-            text-align: center;
-            background-color: #f9f9f9;
-            border-top: .05rem solid #e5e5e5;
-        }
-
-        .blog-footer p:last-child {
-            margin-bottom: 0;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="">
-        <header class="blog-header py-3">
-            <div class="row flex-nowrap justify-content-between align-items-center">
-                <div class="col-4 pt-1">
-                    <a class="link-secondary" href="#">Subscribe</a>
-                </div>
-                <div class="col-4 text-center">
-                    <a class="blog-header-logo text-dark" href="#">Large</a>
-                </div>
-                <div class="col-4 d-flex justify-content-end align-items-center">
-                    <a class="link-secondary" href="#" aria-label="Search">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
-                            viewBox="0 0 24 24">
-                            <title>Search</title>
-                            <circle cx="10.5" cy="10.5" r="7.5" />
-                            <path d="M21 21l-5.2-5.2" />
-                        </svg>
-                    </a>
-                    <a class="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-                </div>
-            </div>
-        </header>
-
-        <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">
-                <a class="p-2 link-secondary" href="#">World</a>
-                <a class="p-2 link-secondary" href="#">U.S.</a>
-                <a class="p-2 link-secondary" href="#">Technology</a>
-                <a class="p-2 link-secondary" href="#">Design</a>
-                <a class="p-2 link-secondary" href="#">Culture</a>
-                <a class="p-2 link-secondary" href="#">Business</a>
-                <a class="p-2 link-secondary" href="#">Politics</a>
-                <a class="p-2 link-secondary" href="#">Opinion</a>
-                <a class="p-2 link-secondary" href="#">Science</a>
-                <a class="p-2 link-secondary" href="#">Health</a>
-                <a class="p-2 link-secondary" href="#">Style</a>
-                <a class="p-2 link-secondary" href="#">Travel</a>
-            </nav>
+<main>
+  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Free</h4>
         </div>
-
-        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
-            <div class="col-md-6 px-0">
-                <h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-                <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
-                    efficiently about what’s most interesting in this post’s contents.</p>
-                <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>
-            </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>10 users included</li>
+            <li>2 GB of storage</li>
+            <li>Email support</li>
+            <li>Help center access</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
         </div>
-
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <div
-                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
-                        <div class="mb-1 text-muted">Nov 12</div>
-                        <p class="card-text mb-auto">This is a wider card with supporting text below as a natural
-                            lead-in to additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
-                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" role="img"
-                            focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Thumbnail</text>
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div
-                    class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-muted">Nov 11</div>
-                        <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to
-                            additional content.</p>
-                        <a href="#" class="stretched-link">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
-                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" role="img"
-                            focusable="false">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Thumbnail</text>
-                        </svg>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">Pro</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>20 users included</li>
+            <li>10 GB of storage</li>
+            <li>Priority email support</li>
+            <li>Help center access</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm border-primary">
+        <div class="card-header py-3 text-bg-primary border-primary">
+          <h4 class="my-0 fw-normal">Enterprise</h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>30 users included</li>
+            <li>15 GB of storage</li>
+            <li>Phone and email support</li>
+            <li>Help center access</li>
+          </ul>
+          <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <main class="">
-        <div class="row">
-            <div class="col-md-8">
-                <h3 class="pb-4 mb-4 font-italic border-bottom">
-                    From the Firehose
-                </h3>
+  <h2 class="display-6 text-center mb-4">Compare plans</h2>
 
-                <div class="blog-post">
-                    <h2 class="blog-post-title">Sample blog post</h2>
-                    <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+  <div class="table-responsive">
+    <table class="table text-center">
+      <thead>
+        <tr>
+          <th style="width: 34%;"></th>
+          <th style="width: 22%;">Free</th>
+          <th style="width: 22%;">Pro</th>
+          <th style="width: 22%;">Enterprise</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row" class="text-start">Public</th>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Private</th>
+          <td></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+        </tr>
+      </tbody>
 
-                    <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap.
-                        Basic typography, images, and code are all supported.</p>
-                    <hr>
-                    <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus
-                        mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere
-                        consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                    <blockquote>
-                        <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong>
-                            ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </blockquote>
-                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
-                        fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    <h2>Heading</h2>
-                    <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non
-                        commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus,
-                        porta ac consectetur ac, vestibulum at eros.</p>
-                    <h3>Sub-heading</h3>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                    <pre><code>Example code block</code></pre>
-                    <p>Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod.
-                        Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-                    <h3>Sub-heading</h3>
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean
-                        lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce
-                        dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
-                        amet risus.</p>
-                    <ul>
-                        <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-                        <li>Donec id elit non mi porta gravida at eget metus.</li>
-                        <li>Nulla vitae elit libero, a pharetra augue.</li>
-                    </ul>
-                    <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.
-                    </p>
-                    <ol>
-                        <li>Vestibulum id ligula porta felis euismod semper.</li>
-                        <li>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</li>
-                        <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
-                    </ol>
-                    <p>Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.</p>
-                </div><!-- /.blog-post -->
+      <tbody>
+        <tr>
+          <th scope="row" class="text-start">Permissions</th>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Sharing</th>
+          <td></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Unlimited members</th>
+          <td></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+        </tr>
+        <tr>
+          <th scope="row" class="text-start">Extra security</th>
+          <td></td>
+          <td></td>
+          <td><svg class="bi" width="24" height="24">
+              <use xlink:href="#check"></use>
+            </svg></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
 
-                <div class="blog-post">
-                    <h2 class="blog-post-title">Another blog post</h2>
-                    <p class="blog-post-meta">December 23, 2013 by <a href="#">Jacob</a></p>
-
-                    <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus
-                        mus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere
-                        consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</p>
-                    <blockquote>
-                        <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong>
-                            ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    </blockquote>
-                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
-                        fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non
-                        commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus,
-                        porta ac consectetur ac, vestibulum at eros.</p>
-                </div><!-- /.blog-post -->
-
-                <div class="blog-post">
-                    <h2 class="blog-post-title">New feature</h2>
-                    <p class="blog-post-meta">December 14, 2013 by <a href="#">Chris</a></p>
-
-                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean
-                        lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce
-                        dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
-                        amet risus.</p>
-                    <ul>
-                        <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
-                        <li>Donec id elit non mi porta gravida at eget metus.</li>
-                        <li>Nulla vitae elit libero, a pharetra augue.</li>
-                    </ul>
-                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet
-                        fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    <p>Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.
-                    </p>
-                </div><!-- /.blog-post -->
-
-                <nav class="blog-pagination">
-                    <a class="btn btn-outline-primary" href="#">Older</a>
-                    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-                </nav>
-
-            </div>
-
-            <aside class="col-md-4">
-                <div class="p-4 mb-3 bg-light rounded">
-                    <h4 class="font-italic">About</h4>
-                    <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur
-                        purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                </div>
-
-                <div class="p-4">
-                    <h4 class="font-italic">Archives</h4>
-                    <ol class="list-unstyled mb-0">
-                        <li><a href="#">March 2014</a></li>
-                        <li><a href="#">February 2014</a></li>
-                        <li><a href="#">January 2014</a></li>
-                        <li><a href="#">December 2013</a></li>
-                        <li><a href="#">November 2013</a></li>
-                        <li><a href="#">October 2013</a></li>
-                        <li><a href="#">September 2013</a></li>
-                        <li><a href="#">August 2013</a></li>
-                        <li><a href="#">July 2013</a></li>
-                        <li><a href="#">June 2013</a></li>
-                        <li><a href="#">May 2013</a></li>
-                        <li><a href="#">April 2013</a></li>
-                    </ol>
-                </div>
-
-                <div class="p-4">
-                    <h4 class="font-italic">Elsewhere</h4>
-                    <ol class="list-unstyled">
-                        <li><a href="#">GitHub</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Facebook</a></li>
-                    </ol>
-                </div>
-            </aside>
-
-        </div><!-- /.row -->
-
-    </main><!-- /.container -->
-
-    <footer class="blog-footer">
-        <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
-                href="https://twitter.com/mdo">@mdo</a>.</p>
-        <p>
-            <a href="#">Back to top</a>
-        </p>
-    </footer>
-
-
-
-</body>
-
-</html>
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+  <div class="row">
+    <div class="col-12 col-md">
+      <img class="mb-2" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="24" height="19">
+      <small class="d-block mb-3 text-body-secondary">© 2017–2023</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+        <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
