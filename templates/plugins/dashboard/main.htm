@@ -1,35 +1,58 @@
 {% extends 'layout.html' %}
-
 {% block main %}
-  <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary" style="width: 4.5rem; height: 100vh;">
     
-    <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-      <li class="nav-item">
-        <a href="#" class="nav-link active py-3 border-bottom rounded-0" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Home" data-bs-original-title="Home">
-          <i class="bi bi-house-door"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
-          <i class="bi bi-speedometer"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
-          <i class="bi bi-calendar"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
-          <i class="bi bi-box"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
-          <i class="bi bi-people"></i>
-        </a>
-      </li>
-    </ul>
+<div class="row" style="height: 100vh;">
+
+  <div class="col-auto">
+    <div class="d-flex flex-column flex-shrink-0 bg-body-tertiary bash-bar" style="width: 4.5rem; height: 100vh;">
     
+      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+          <a href="#" class="nav-link active py-3 border-bottom rounded-0" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Home" data-bs-original-title="Home">
+            <i class="bi bi-house-door"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
+            <i class="bi bi-speedometer"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
+            <i class="bi bi-calendar"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
+            <i class="bi bi-box"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link py-3 border-bottom rounded-0" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
+            <i class="bi bi-people"></i>
+          </a>
+        </li>
+      </ul>
+      
+    </div>
   </div>
-{% endblock %}
+
+  <div class="col" >
+    <div class="dasx" id="dashx" name="dashx"></div>
+  </div>
+
+</div>
+<style>
+  .fix-footer {
+    display: none;
+  }
+  .bash-bar{
+    position: relative;
+    z-index: 1;
+    
+    left: 0;
+    transition: width 0.3s;
+  }
+</style>
+
+{% endblock main %}
