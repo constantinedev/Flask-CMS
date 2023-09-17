@@ -42,7 +42,7 @@ def register():
 
 		try:
 			sqlite_utils.Database('db/admin.session')['agents'].insert(reg_info, alter=True)
-			return redirect('/login')
+			return redirect(url_for('log_in'))
 		except sqlite3.OperationalError as e:
 			return render_template('theam/register.html', title="ERROR", result="REGIST ERROR")
 	
