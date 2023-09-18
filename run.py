@@ -18,6 +18,7 @@ session.proxies['https'] = 'socks5h://localhost:9050'
 app = Flask(__name__)
 app.secret_key = b'82d52ae6cdbed6a5s9c15s19a5sc9a5s12f4043ebde05d2'
 app.wsgi_app = ProxyFix(app.wsgi_app)
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 ckeditor = CKEditor(app)
 app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
 app.config['CKEDITOR_FILE_UPLOADER'] = 'uploads'
