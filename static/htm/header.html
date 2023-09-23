@@ -45,16 +45,16 @@
 
 <script>
 	$("#abuot").on("click", function () {
-		// $(".modal-body").html("connecting...");
+		$(".modal-body").html("connecting...");
 		// $(".modal-body").load("static/htm/abuot.html");
-		$('.modal-body').load('templates/theam/aboutus.html');
+		$('.modal-body').load('/static/htm/aboutus.html');
 		$('#modalTitleId').html("<strong>Loading ...</strong>");
 		// $('#modalTitleId').html("<strong>ABOUT US</strong>");
 	});
-	$("#donations").on("click", function () {
+	$("#content_us").on("click", function () {
 		$(".modal-body").html("connecting...");
-		// $(".modal-body").load("static/htm/donations.html");
-		$('#modalTitleId').html("<strong>Loading ...</strong>");
+		$(".modal-body").load("static/htm/content.html");
+		$('#modalTitleId').html("<strong>Contnet </strong>");
 		// $('#modalTitleId').html("<strong>DONATIONS TO US</strong>");
 	});
 	$("#ordernow").on("click", function () {
