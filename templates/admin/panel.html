@@ -3,51 +3,51 @@
 {% block main %}
 <div class="content">
 <div class="row">
-	<div class="left_menu_list col-2 my-4">
-		<div class="form-control">
-			<div class="d-grid mb-3 my-3">
-				<ul class="list-group">
-					<span class="text-center"><strong>ACCOUNT SETTINGS</strong></span><hr>
-					<li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=profile">PROFILE</a></li>
-					<li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=agent_manage">EDIT AGENTS</a></li>
-					<li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=categorys_edit&act_=act_list">EDIT CATEGORYS</a></li>
-					<li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=settings">SETTINGS</a></li>
-				</ul>
-			</div>
-		
-			<div class="d-grid mb-3">
-				<ul class="list-group">
-					<span class="text-center"><strong>YOUR MANAGEMENT</strong></span><hr>
-					<li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel/blogger?pag=crt_newpost">NEW POST</a></li>
-					<li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel/blogger?pag=post_edit">EDIT POST</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+  <div class="left_menu_list col-2 my-4">
+    <div class="form-control">
+      <div class="d-grid mb-3 my-3">
+        <ul class="list-group">
+          <span class="text-center"><strong>ACCOUNT SETTINGS</strong></span><hr>
+          <li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=profile">PROFILE</a></li>
+          <li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=agent_manage">EDIT AGENTS</a></li>
+          <li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=categorys_edit&act_=act_list">EDIT CATEGORYS</a></li>
+          <li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel?pag=settings">SETTINGS</a></li>
+        </ul>
+      </div>
+    
+      <div class="d-grid mb-3">
+        <ul class="list-group">
+          <span class="text-center"><strong>YOUR MANAGEMENT</strong></span><hr>
+          <li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel/blogger?pag=crt_newpost">NEW POST</a></li>
+          <li class="list-group-item list-group-item-action"><a class="nav-link" href="/panel/blogger?pag=post_edit">EDIT POST</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-	<!-- </div>
-	<div class="row "> -->
+  <!-- </div>
+  <div class="row "> -->
 
-	<div class="right_setting_panel justify-content-end col-10 my-4">
-		
-		{% if pag == 'profile' %}
-			<div id="user-profile">{% include "admin/profile.html" %}</div>
-		{% elif pag == 'settings' %}
-			<div id="site-settings">{% include "error.html" %}</div>
-		{% elif pag == 'crt_newpost' %}
-			<div id="crt-newpost">{% include "plugins/blogger/post.html" %}</div>
-		{% elif pag == 'post_edit' %}
-			<div id="post-list">{% include "plugins/blogger/view_postlist.html" %}</div>
-		{% elif pag == 'categorys_edit' %}
-			<div id="categorys_edit">{% include "admin/view_categorylist.html" %}</div>
-		{% elif pag == 'agent_manage' %}
-			<div id="agent_manage">{% include "admin/view_userlist.html" %}</div>
-		
-		{% else %} <!-- Default Page Loader -->
-			<div id="user-profile">{% include "admin/profile.html" %}</div>
-		{% endif %}
-	
-	</div>
+  <div class="right_setting_panel justify-content-end col-10 my-4">
+    
+    {% if pag == 'profile' %}
+      <div id="user-profile">{% include "admin/profile.html" %}</div>
+    {% elif pag == 'settings' %}
+      <div id="site-settings">{% include "error.html" %}</div>
+    {% elif pag == 'crt_newpost' %}
+      <div id="crt-newpost">{% include "plugins/blogger/post.html" %}</div>
+    {% elif pag == 'post_edit' %}
+      <div id="post-list">{% include "plugins/blogger/view_postlist.html" %}</div>
+    {% elif pag == 'categorys_edit' %}
+      <div id="categorys_edit">{% include "admin/view_categorylist.html" %}</div>
+    {% elif pag == 'agent_manage' %}
+      <div id="agent_manage">{% include "admin/view_userlist.html" %}</div>
+    
+    {% else %} <!-- Default Page Loader -->
+      <div id="user-profile">{% include "admin/profile.html" %}</div>
+    {% endif %}
+  
+  </div>
 
 </div>
 </div>
