@@ -16,12 +16,13 @@ We have stop the CK-Editor Upload path but we tag the example code from flask-ck
 I stop the secuitry test on here.<br>
 
 Update the bootstrap version and and one more open function `dashboard`<br>
-We have same make the template empty page for the dashboard with file `dash00.htm` in templates folder.<br>
+We have same make the template empty page for the dashboard with file `plugins/dashboard/main.htm` in templates folder.<br>
 Now you can create and setup your free code free API, easy convert and display with web html.<br>
 Free for Open!!!
 ![image](https://user-images.githubusercontent.com/1324252/217410498-87566f7c-4194-48b1-ae58-e1c332a90212.png)
 
 ### !!!NEW!!! Dashboard & Nav For FREE!<br>
+
 ![image](https://github.com/constantinedev/Flask-CMS/assets/1324252/51ad0f56-07df-4959-903f-6cb096c95df6)
 
 For the basic This Demo will show you the basic secuirty login and, How to update the data with SQLite Database.
