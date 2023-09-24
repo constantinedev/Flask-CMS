@@ -16,8 +16,8 @@
 				</div>
 				<div class="navbar-nav text-center">
 					<a class="nav-link" aria-current="page" href="/">HOME</a>
-					<a class="nav-link" aria-current="page" href="#" id="abuot" data-bs-toggle="modal" data-bs-target="#modalId">ABOUT US</a>
-					<a class="nav-link" aria-current="page" href="#" id="content_us" data-bs-toggle="modal" data-bs-target="#modalId">CONTENT US</a>
+					<a class="nav-link" aria-current="page" href="#" id="abuot" data-bs-toggle="modal" data-bs-target="#modalId">ABOUT</a>
+					<a class="nav-link" aria-current="page" href="#" id="content_us" data-bs-toggle="modal" data-bs-target="#modalId">CONTENT</a>
 				</div>
 			</div>
 		</div>
@@ -48,13 +48,13 @@
 		$(".modal-body").html("connecting...");
 		// $(".modal-body").load("static/htm/abuot.html");
 		$('.modal-body').load('/static/htm/about_us.html');
-		$('#modalTitleId').html("<strong>Loading ...</strong>");
+		$('#modalTitleId').html("<strong>About</strong>");
 		// $('#modalTitleId').html("<strong>ABOUT US</strong>");
 	});
 	$("#content_us").on("click", function () {
 		$(".modal-body").html("connecting...");
 		$(".modal-body").load("static/htm/content_us.html");
-		$('#modalTitleId').html("<strong>Contnet </strong>");
+		$('#modalTitleId').html("<strong>Contnet</strong>");
 		// $('#modalTitleId').html("<strong>DONATIONS TO US</strong>");
 	});
 	$("#ordernow").on("click", function () {
