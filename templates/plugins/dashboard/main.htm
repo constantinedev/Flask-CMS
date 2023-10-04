@@ -27,9 +27,9 @@
 	.sidenav a {
 		padding: 4px 4px 4px 8px;
 		text-decoration: none;
-		font-size: 18px;
+		font-size: 20px;
 		/* Change this to your desired text color */
-		display: block;
+		display: flex;
 	}
 
 	.sidenav a:hover {
@@ -45,30 +45,24 @@
 </style>
 <div class="row">
   <div class="col-auto">
-    <div class="sidenav border rounded-end-5 flex-column bg-body-tertiary" style="min-width:150px;">
+    <div class="sidenav border rounded-end-5 flex-column bg-body-tertiary">
       <a href="/dashboard?pag=dashboard" class="nav-link border-bottom rounded-1" name="dash_home" aria-current="page" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-        <i class="bi bi-house"></i>
-					Home
+        <i class="bi bi-house" style="font-size: 28px;"></i>&nbsp;Home
       </a>
       <a href="#" class="nav-link py-2 border-bottom rounded-1" name="dash00" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Dashboard" data-bs-original-title="Dashboard">
-        <i class="bi bi-speedometer"></i>
-					Dashboard
+        <i class="bi bi-speedometer" style="font-size: 28px;"></i>&nbsp;Dashboard
       </a>
       <a href="#" class="nav-link py-2 border-bottom rounded-1" name="dash01" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Booking" data-bs-original-title="Booking">
-        <i class="bi bi-calendar-date"></i>
-					Schedules
+        <i class="bi bi-calendar-date" style="font-size: 28px;"></i>&nbsp;Schedules
       </a>
       <a href="#" class="nav-link py-2 border-bottom rounded-1" name="dash02" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Orders" data-bs-original-title="Orders">
-        <i class="bi bi-table"></i>
-					Events
+        <i class="bi bi-table" style="font-size: 28px;"></i>&nbsp;Events
       </a>
       <a href="#" class="nav-link py-2 border-bottom rounded-1" name="dash03" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Products" data-bs-original-title="Products">
-        <i class="bi bi-grid-fill"></i>
-					Products
+        <i class="bi bi-grid-fill" style="font-size: 28px;"></i>&nbsp;Products
       </a>
       <a href="#" class="nav-link py-2 border-bottom rounded-1" name="dash04" data-bs-toggle="tooltip" data-bs-placement="right" aria-label="Customers" data-bs-original-title="Customers">
-        <i class="bi bi-person-circle"></i>
-					Customers
+        <i class="bi bi-person-circle" style="font-size: 28px;"></i>&nbsp;Customers
       </a> 
     </div>
   </div>
@@ -82,6 +76,9 @@
 <script>
 	$('[name="dashx"]').load("{{ url_for('static', filename='htm/src/tmp.htm') }}");
 	
+	$('[name="dash_home"]').on('click', function(){
+		$('[name="dashx"]').load("{{ url_for('static', filename='htm/src/tmp.htm') }}");
+	});
 	$('[name="dash00"]').on('click', function(){
 		alert('dash1 replace your javascript on this alert in [templates>plugins>dashboard>main.htm]');
 	});
@@ -99,7 +96,7 @@
 	});
 </script>
 <style>
-  .fix-footer{
+  .fix-footer {
     display: none;
   }
 </style>
