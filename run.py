@@ -92,8 +92,8 @@ def user_conf(config):
 
 @app.route('/dashboard', methods=["GET", "POST"])
 @login_required
-async def dashboard():
-  return await page_loader()
+def dashboard():
+  return page_loader()
 
 ### ckEditor Upload example ***
 # @app.route('/files/<path:filename>')
