@@ -10,7 +10,7 @@ matplotlib
 werkzeug
 importlib
 Blueprint
-flask
+flask[async]
 flask_admin
 flask_login
 flask_ckeditor
