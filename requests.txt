@@ -23,6 +23,8 @@ pytz
 pycountry
 sip
 lxml
+plotly
+plotly-express
 
 #PostgreSQL support remove the # of following line
 #psycopg2
