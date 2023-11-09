@@ -25,7 +25,6 @@ sip
 lxml
 plotly
 plotly-express
-urllib3
 
 #PostgreSQL support remove the # of following line
 #psycopg2
