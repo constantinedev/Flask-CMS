@@ -74,7 +74,7 @@ def log_out():
 @app.route('/panel', methods=["GET", "POST"])
 @login_required
 def panel():
-    return panel_api()
+  return panel_api()
 
 @app.route('/panel/blogger', methods=["GET", "POST"])
 @login_required
