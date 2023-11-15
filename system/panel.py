@@ -59,12 +59,6 @@ def sing_in():
 			loginID = agent()
 			loginID.id = request.form['username']
 			for row in sqlite_utils.Database('db/admin.session')['agents'].rows_where("login_id = :login_id", {"login_id": request.form['username']}):
-				loginID.agent_id = row['id']
-				loginID.login_id = request.form['username']
-				loginID.dpName = row['username']
-				loginID.email = row['email']
-				loginID.fname = row['fname']
-				loginID.lname = row['lname']
 				sqlite_utils.Database('db/admin.session')['agents'].update(int(row['id']), {"last_login": str(DT.now(TZ.utc))}, alter=True)
 			login_user(loginID)
 			return redirect('/panel')
