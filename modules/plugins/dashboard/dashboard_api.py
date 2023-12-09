@@ -16,4 +16,4 @@ async def page_loader():
       return redirect(url_for("/error_page"))
     else:
       retu_json = request.get_json()
-      return jsonify(retu_json)
+      return jsonify(retu_json), 200
