@@ -99,7 +99,7 @@ def panel_api():
 				cat_id = request.args.get("cat_id")
 				for row in list(sqlite_utils.Database('data_db/blog.sqlite3')['categories'].rows_where("id = :cat_id", {"cat_id": cat_id})):
 					categorys.append(row)
-				return jsonify(categorys[0])
+				return jsonify(categorys[0]), 200
 		
 		if pag == "categorys":
 			return categorys_edit()
@@ -130,7 +130,7 @@ def get_agents_profile(userid):
 	asg_api = {}
 	for agent in sqlite_utils.Database('db/admin.session')['agents'].rows_where("id = :id", {"id": userid}):
 		asg_api.update(agent)
-		return jsonify(asg_api)
+		return jsonify(asg_api), 200
 ###############################
 
 def profile_update_():
@@ -167,9 +167,9 @@ def update_users():
 	for agent in list(sqlite_utils.Database('db/admin.session')['agents'].rows_where("login_id = :loginID", {"loginID": request.json['login_id']})):
 		try:
 			sqlite_utils.Database('db/admin.session')['agents'].update(agent['id'], request.json, alter=True)
-			return jsonify({"status": f"UPDATE SUCCESS"})
+			return jsonify({"status": f"UPDATE SUCCESS"}), 200
 		except sqlite3.IntegrityErrir as e:
-			return jsonify({"status": f"UPDATE ERROR: {e}"})
+			return jsonify({"status": f"UPDATE ERROR: {e}"}), 405
 			
 	return redirect(url_for("panel", pag="agent_manage", title="POST COMPLET"))
 
@@ -187,9 +187,9 @@ def categorys_edit():
 		}
 		try:
 			sqlite_utils.Database("data_db/blog.sqlite3")['categories'].insert(categorys_data, alter=True)
-			return jsonify({"status": "CREATE SUCCESS"})
+			return jsonify({"status": "CREATE SUCCESS"}), 200
 		except sqlite3.IntegrityError as e:
-			return jsonify({"status": "CATEGORY ALREADY EXISTS"})
+			return jsonify({"status": "CATEGORY ALREADY EXISTS"}), 405
 			
 	if request.args.get('acts_') == 'update':
 		data = request.get_json()
@@ -203,10 +203,10 @@ def categorys_edit():
 		try:
 			sqlite_utils.Database("data_db/blog.sqlite3")['categories'].update(request.args.get('id'), categorys_data, alter=True)
 			# flash('UPDATE SUCCESS')
-			return jsonify({"status": "UPDATE SUCCESS"})
+			return jsonify({"status": "UPDATE SUCCESS"}), 200
 		except sqlite3.OperationalError as e:
 			# flash('UPDATE ABORT')
-			return jsonify({"status": f"UPDATE ABORT: {e} "})
+			return jsonify({"status": f"UPDATE ABORT: {e} "}), 405
 		
 	if request.args.get('acts_') == 'remove':
 		data = request.get_json()
@@ -219,7 +219,7 @@ def categorys_edit():
 			return redirect('/panel?mod=categorys_edit&act_=act_list')
 		except sqlite3.OperationalError as e:
 			# flash('UPDATE ABORT')
-			return jsonify({"status": f"DELETE ABORT: {e} "})
+			return jsonify({"status": f"DELETE ABORT: {e} "}), 200
 			
 	return redirect("/panel?mod=categorys_edit&act_=act_list")
 
@@ -270,7 +270,7 @@ def img_uploader():
 								
 			except IOError:
 				return Response('Cannot create thumbnail for ' + filename, 500)
-			return jsonify({'location' : filename})
+			return jsonify({'location' : filename}), 200
 
 		# fail, image did not upload
 	return Response('Filename needs to be JPG, JPEG, GIF or PNG', 500)
