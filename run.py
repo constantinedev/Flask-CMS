@@ -10,6 +10,7 @@ from system.panel import set_password, check_password, panel_api, register, sing
 
 from modules.plugins.blogger.blog import blog_api
 from modules.plugins.dashboard.dashboard_api import page_loader
+from modules.apis import api_loader
 
 session = requests.session()
 session.proxies = {}
@@ -26,7 +27,7 @@ app.config['CKEDITOR_FILE_UPLOADER'] = 'uploads'
 app.config['CKEDITOR_HEIGHT'] = 900
 
 if app.testing:
-    app.config['WTF_CSRF_ENABLED'] = False
+  app.config['WTF_CSRF_ENABLED'] = False
     
 login.init_app(app)
 login.login_view = '/login'
@@ -90,6 +91,10 @@ def user_conf(config):
     if config == 'update_profile':
       print('demo')
     return 'TEST Today' + str(DT.now())
+
+@app.route("/apis", methods=["GET", "POST"])
+async def apis():
+  return await api_loader()
 
 @app.route('/dashboard', methods=["GET", "POST"])
 @login_required
