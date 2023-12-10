@@ -5,22 +5,23 @@ from flask import Flask, Blueprint, request, make_response, Response, jsonify, r
 
 from modules.aioRequests import gun_shell
 
-async def api_loader():
+async def api_loader(version):
   if request.method == "GET":
-    if request.args.get("mod") == "":
-      await apis()
+    if version == "v1":
+      await api_v1()
     else:
       return jsonify({"status": "Normal Connect Success!"})
   elif request.method == "POST":
+    if version == "v2":
+      await api_v2()
     if request.args.get("mod") == "sq":
       await QueryFunction()
       
-async def apis():
-  json_data = {
-    "status": "Success",
-    "response": "apis redirect complete."
-  }
-  return jsonify(json_data), 200
+async def api_v1():
+  return jsonify({"status": 200, "response": "API v1 test comport"}), 200
+
+async def api_v2():
+  return jsonify({"status": 200, "response": "API v2 test comport"}), 200
 
 async def QueryFunction():
   json_data = {
