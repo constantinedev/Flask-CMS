@@ -10,6 +10,8 @@ class setup_db:
     'pwd': str,
     "username": str,
     'email': str,
+    'token': str,
+    'pgp_tok': str,
     'fname': str,
     'lname': str,
     'last_login': str,
@@ -19,7 +21,7 @@ class setup_db:
     pk="id",
     if_not_exists=True
   )
-  sqlite_utils.Database('db/admin.session').create_view('vlogin', f"SELECT id, login_id, username, email, fname, lname FROM agents;", replace=True)
+  sqlite_utils.Database('db/admin.session').create_view('vlogin', f"SELECT id, login_id, username, email, fname, lname, pgp_tok FROM agents;", replace=True)
   
   ### Blogger DB
   sqlite_utils.Database('data_db/blog.sqlite3')['post'].create({
