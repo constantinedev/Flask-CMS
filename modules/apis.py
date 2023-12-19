@@ -22,8 +22,8 @@ async def api_loader(version):
       return redirect('/error_page')
       
 async def api_v1():
-  apis_ = request.args.get('info')
-  if apis_ == "ctzinfo":
+  reqType = request.args.get('info')
+  if reqType == "ctzinfo":
     return await CountryList()
   return jsonify({"status": 200, "response": "API v1 test comport"}), 200
 
