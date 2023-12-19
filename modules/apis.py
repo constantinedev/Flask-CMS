@@ -1,4 +1,4 @@
-import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, pytz, pgpy, logging
+import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, pytz, pgpy, base64, logging
 from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
@@ -33,3 +33,18 @@ async def QueryFunction():
     "response": "Query Function Ready Connect"
   }
   return jsonify(json_data), 200
+
+async def tokMaker(uname_, phass_):
+  if uname_ is not None and phass_ is not None:
+    uname = base64.b16decode(uname_.encode("UTF-8")).decode("UTF-8")
+    phass = base64.b16decode(phass_.encode("UTF-8")).decode("UTF-8")
+    token = f"{uname}:{phass}"
+    return token
+  
+async def pgpEnc(data, phass):
+  pgpMsg = pgpy.PGPMessage.new(data).encrypt(phass)
+  return pgpMsg
+  
+async def pgpDec(data, phass):
+  txtMsg = (data).decrypt(phass).message
+  return txtMsg
