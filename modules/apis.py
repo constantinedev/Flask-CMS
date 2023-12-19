@@ -36,15 +36,21 @@ async def QueryFunction():
 
 async def tokMaker(uname_, phass_):
   if uname_ is not None and phass_ is not None:
-    uname = base64.b16decode(uname_.encode("UTF-8")).decode("UTF-8")
-    phass = base64.b16decode(phass_.encode("UTF-8")).decode("UTF-8")
+    uname = base64.b16encode(str(uname_).encode("UTF-8")).decode("UTF-8")
+    phass = base64.b16encode(str(phass_).encode("UTF-8")).decode("UTF-8")
     token = f"{uname}:{phass}"
     return token
+  
+async def tokRecovery(token):
+  uname_, phass_ = str(token).strip(":")
+  uname = base64.decode(uname_.encode("UTF-8"))
+  phass = base64.decode(phass_.encode("UTF-8"))
+  return uname, phass
   
 async def pgpEnc(data, phass):
   pgpMsg = pgpy.PGPMessage.new(data).encrypt(phass)
   return pgpMsg
   
 async def pgpDec(data, phass):
-  txtMsg = (data).decrypt(phass).message
+  txtMsg = pgpy.PGPMessage.from_blob(data).decrypt(phass).message
   return txtMsg
