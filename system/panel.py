@@ -1,4 +1,4 @@
-import re, os, io, json, sqlite_utils, requests, logging
+import re, os, io, sys, ssl, csv, json, sqlite_utils, requests, jwt, pgpy, base64, logging
 from sqlite_utils.utils import sqlite3
 from datetime import datetime as DT, timezone as TZ
 from flask import Flask, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
@@ -19,6 +19,8 @@ def register():
 		username = request.form['username']
 		password = request.form['password']
 		email = request.form['email']
+		token = f"{base64.b16decode(UID.encode('UTF-8')).decode('UTF-8')}:{base64.b16decode(email.encode('UTF-8')).decode('UTF-8')}"
+		pgp_tok = pgpy.PGPMessage.new(token).encrypt(password)
 		fname = request.form['fname']
 		lname = request.form['lname']
 
@@ -143,6 +145,7 @@ def profile_update_():
 		else:
 			password_fix = request.form['new-password']
 		if check_password(request.form['loginID'], request.form['old-password']):
+			token = f"{base64.b16decode(request.form['loginID'].encode('UTF-8')).decode('UTF-8')}:{base64.b16decode(request.form['email'].encode('UTF-8')).decode('UTF-8')}"
 			prof_upd_reg = {
 				# "login_id": request.form['loginID'],
 				"pwd": set_password(password_fix),
@@ -150,6 +153,8 @@ def profile_update_():
 				"username": request.form['dpName'],
 				"fname": request.form['fname'],
 				"lname": request.form['lname'],
+				"token": token,
+				"pgp_tok": pgpy.PGPMessage.new(token).encrypt(request.form['old-password']),
 				"last_update": str(DT.now(TZ.utc))
 			}
 			try:
