@@ -42,7 +42,7 @@ def register():
 			"fname": fname,
 			"lname": lname,
 			"token": token,
-			"pgp_tok": pgp_tok,
+			"pgp_tok": str(pgp_tok),
 			"create_dateime": str(DT.now(TZ.utc))
 		}
 
@@ -150,7 +150,6 @@ def profile_update_():
 			password_fix = request.form['new-password']
 		if check_password(request.form['loginID'], request.form['old-password']):
 			token = asyncio.run(tokMaker(request.form['loginID'], request.form['email']))
-			pgp_tok = asyncio.run(pgpEnc(token, password_fix))
 			prof_upd_reg = {
 				# "login_id": request.form['loginID'],
 				"pwd": set_password(password_fix),
@@ -158,8 +157,8 @@ def profile_update_():
 				"username": request.form['dpName'],
 				"fname": request.form['fname'],
 				"lname": request.form['lname'],
-				"token": token,
-				"pgp_tok": pgp_tok,
+				"token": str(token),
+				"pgp_tok":str(asyncio.run(pgpEnc(token, password_fix))),
 				"last_update": str(DT.now(TZ.utc))
 			}
 			try:
