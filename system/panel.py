@@ -43,6 +43,7 @@ def register():
 			"lname": lname,
 			"token": token,
 			"pgp_tok": str(pgp_tok),
+			"type": "agents",
 			"create_dateime": str(DT.now(TZ.utc))
 		}
 
