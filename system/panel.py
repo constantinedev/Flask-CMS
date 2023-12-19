@@ -1,10 +1,12 @@
-import re, os, io, sys, ssl, csv, json, sqlite_utils, requests, jwt, pgpy, base64, logging
+import re, os, io, sys, ssl, csv, json, sqlite_utils, requests, asyncio, jwt, pgpy, base64, logging
 from sqlite_utils.utils import sqlite3
 from datetime import datetime as DT, timezone as TZ
 from flask import Flask, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from system.setup import agent, login
+
+from modules.apis import tokMaker, pgpEnc, pgpDec
 
 def set_password(password):
 	return generate_password_hash(password, method="pbkdf2:sha256")
@@ -19,8 +21,8 @@ def register():
 		username = request.form['username']
 		password = request.form['password']
 		email = request.form['email']
-		token = f"{base64.b16decode(UID.encode('UTF-8')).decode('UTF-8')}:{base64.b16decode(email.encode('UTF-8')).decode('UTF-8')}"
-		pgp_tok = pgpy.PGPMessage.new(token).encrypt(password)
+		token = asyncio.run(tokMaker(UID, email))
+		pgp_tok = asyncio.run(pgpEnc(token, password))
 		fname = request.form['fname']
 		lname = request.form['lname']
 
@@ -39,6 +41,8 @@ def register():
 			"email": email,
 			"fname": fname,
 			"lname": lname,
+			"token": token,
+			"pgp_tok": pgp_tok,
 			"create_dateime": str(DT.now(TZ.utc))
 		}
 
@@ -145,7 +149,8 @@ def profile_update_():
 		else:
 			password_fix = request.form['new-password']
 		if check_password(request.form['loginID'], request.form['old-password']):
-			token = f"{base64.b16decode(request.form['loginID'].encode('UTF-8')).decode('UTF-8')}:{base64.b16decode(request.form['email'].encode('UTF-8')).decode('UTF-8')}"
+			token = asyncio.run(tokMaker(request.form['loginID'], request.form['email']))
+			pgp_tok = asyncio.run(pgpEnc(token, password_fix))
 			prof_upd_reg = {
 				# "login_id": request.form['loginID'],
 				"pwd": set_password(password_fix),
@@ -154,7 +159,7 @@ def profile_update_():
 				"fname": request.form['fname'],
 				"lname": request.form['lname'],
 				"token": token,
-				"pgp_tok": pgpy.PGPMessage.new(token).encrypt(request.form['old-password']),
+				"pgp_tok": pgp_tok,
 				"last_update": str(DT.now(TZ.utc))
 			}
 			try:
