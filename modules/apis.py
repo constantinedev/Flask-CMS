@@ -1,4 +1,4 @@
-import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, pytz, pgpy, base64, logging
+import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, pycountry, pytz, pgpy, base64, logging
 from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
@@ -22,6 +22,9 @@ async def api_loader(version):
       return redirect('/error_page')
       
 async def api_v1():
+  apis_ = request.args.get('info')
+  if apis_ == "ctzinfo":
+    return await CountryList()
   return jsonify({"status": 200, "response": "API v1 test comport"}), 200
 
 async def api_v2():
@@ -54,3 +57,23 @@ async def pgpEnc(data, phass):
 async def pgpDec(data, phass):
   txtMsg = pgpy.PGPMessage.from_blob(data).decrypt(phass).message
   return txtMsg
+
+async def CountryList():
+  countryList = []
+  all_countrys = pycountry.countries
+  for country in all_countrys:
+    timezones = pytz.country_timezones.get(country.alpha_2)
+    if timezones:
+      for timezone in timezones:
+        offset = DT.now(pytz.timezone(timezone)).strftime("%z")
+        offset = f"{offset[:-2]}:{offset[-2:]}"
+        _da = {
+          "country_code": country.alpha_2,
+          "timezone_offset": offset,
+          "country_name": country.name,
+          "timezone": timezone,
+        }
+        countryList.append(_da)
+      else:
+        pass
+  return Response(json.dumps(countryList, ensure_ascii=False), content_type="application/json"), 200
