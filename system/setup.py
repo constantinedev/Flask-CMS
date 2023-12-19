@@ -114,6 +114,7 @@ def load_user(login_id):
     user_tok.dpName = row['username']
     user_tok.email = row['email']
     user_tok.fname = row['fname']
+    user_tok.token = row['token']
     user_tok.lname = row['lname']
     
     sqlite_utils.Database('db/admin.session')['agents'].update(int(row['id']), {"last_login": str(DT.now(TZ.utc))}, alter=True)
