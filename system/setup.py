@@ -1,5 +1,6 @@
 import re, io, sys, json, sqlite_utils, requests
 from datetime import datetime as DT, timezone as TZ
+from sqlite_utils.utils import sqlite3
 from flask_login import UserMixin, LoginManager
 
 class setup_db:
