@@ -21,10 +21,11 @@ def register():
 		username = request.form['username']
 		password = request.form['password']
 		email = request.form['email']
-		token = asyncio.run(tokMaker(UID, email))
-		pgp_tok = asyncio.run(pgpEnc(token, password))
 		fname = request.form['fname']
 		lname = request.form['lname']
+  
+		token = asyncio.run(tokMaker(UID, email))
+		pgp_tok = asyncio.run(pgpEnc(token, password))
 
 		for row in list(sqlite_utils.Database('db/admin.session')["vlogin"].rows_where("login_id = :UID", {"UID": UID})):
 			return render_template('register.html', title="ERROR", username_err="UserID Already Registed!")
