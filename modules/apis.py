@@ -3,6 +3,8 @@ from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
 
+import pycountry, qrcode, qrcode.image.svg
+
 from modules.aioRequests import gun_shell
 
 async def api_loader(version):
@@ -57,6 +59,14 @@ async def pgpEnc(data, phass):
 async def pgpDec(data, phass):
   txtMsg = pgpy.PGPMessage.from_blob(data).decrypt(phass).message
   return txtMsg
+
+async def svgQRmaker(src):
+  qr = qrcode.QRcode(image_factory=qrcode.image.svg.SvgPathFillImage)
+  qr.add_data(src)
+  qr.make(fit=False)
+  img = qr.make_image(attrib={'class': 'vQR'})
+  svgImg = img.to_string(encoding="unicode")
+  return svgImg
 
 async def CountryList():
   countryList = []
