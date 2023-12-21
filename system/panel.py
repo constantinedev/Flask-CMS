@@ -159,7 +159,7 @@ def profile_update_():
 				"username": request.form['dpName'],
 				"fname": request.form['fname'],
 				"lname": request.form['lname'],
-				"token": str(token),
+				"token": token,
 				"pgp_tok":str(asyncio.run(pgpEnc(token, password_fix))),
 				"last_update": str(DT.now(TZ.utc))
 			}
