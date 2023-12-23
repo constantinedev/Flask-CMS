@@ -10,15 +10,11 @@ async def api_loader(version):
   if request.method == "GET":
     if version == "v1":
       return await api_v1()
-    elif version == "v2":
-      return await api_v2()
     else:
-      return jsonify({"status": "Normal Connect Success!"})
+      return jsonify({"status": 200, "response": "Page Not Found!"}), 200
   elif request.method == "POST":
     if version == "v2":
       return await api_v2()
-    elif request.args.get("mod") == "sq":
-      return await QueryFunction()
     else:
       return redirect('/error_page')
       
@@ -29,6 +25,8 @@ async def api_v1():
   return jsonify({"status": 200, "response": "API v1 test comport"}), 200
 
 async def api_v2():
+  if request.args.get('mod') == 'sq":
+    return await QueryFunction()
   return jsonify({"status": 200, "response": "API v2 test comport"}), 200
 
 async def QueryFunction():
