@@ -25,7 +25,7 @@ async def api_v1():
   return jsonify({"status": 200, "response": "API v1 test comport"}), 200
 
 async def api_v2():
-  if request.args.get('mod') == 'sq":
+  if request.args.get('mod') == "sq":
     return await QueryFunction()
   return jsonify({"status": 200, "response": "API v2 test comport"}), 200
 
