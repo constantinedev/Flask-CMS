@@ -1,5 +1,11 @@
 import re, os, io, sys, ast, ssl, csv, json, sqlite_utils, asyncio, aiohttp
 from aiohttp_socks import ProxyType,ProxyConnector, ChainProxyConnector
+from random_user_agent.user_agent import UserAgent
+from random_user_agent.params import SoftwareName, OperatingSystem
+software_names = [SoftwareName.CHROME.value, SoftwareName.FIREFOX.value, SoftwareName.SAFARI.value]
+operating_systems = [OperatingSystem.WINDOWS.value, OperatingSystem.LINUX.value, OperatingSystem.MAC.value]
+user_agent_rotator = UserAgent(software_names=software_names, operating_systems=operating_systems, limit=200)
+user_agent = user_agent_rotator.get_random_user_agent()
 
 async def gun_shell(url, method, type, headers, payload):
   if url == "" or url is None:
