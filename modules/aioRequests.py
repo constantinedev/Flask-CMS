@@ -17,13 +17,13 @@ async def gun_shell(url, method, type, headers, payload):
 
   if type=="nor":
     async with aiohttp.ClientSession() as session:
-      return await bulletfire(session, url, method, headers, payload)
+      return await bulletfire(session, url, method, type, headers, payload)
   elif type=="tor":
     connector = ProxyConnector.from_url("socks5://127.0.0.1:9050")
     async with aiohttp.ClientSession(connector=connector) as session:
-      return await bulletfire(session, url, method, headers, payload)
+      return await bulletfire(session, url, method, type, headers, payload)
      
-async def bulletfire(session, url, method, headers, payload):
+async def bulletfire(session, url, method, type, headers, payload):
   if method == "GET":
     async with session.get(url, headers=headers, data=payload) as response:
       if response.status == 200:
