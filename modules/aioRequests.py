@@ -11,7 +11,7 @@ async def gun_shell(url, method, type, headers, payload):
   if url == "" or url is None:
     return {"status": "Error", "response": "URL was empty!"	}
   if headers=={} or headers is None:
-    headers={"Content-Type": 'application/json'}
+    headers={"User-Agent":user_agent, "Content-Type": 'application/json'}
   if payload=={} or payload is None:
     payload={}
 
