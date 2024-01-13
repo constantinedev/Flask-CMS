@@ -6,7 +6,7 @@ pillow
 numpy
 requests
 sqlite_utils
-matplotlib
+# matplotlib #if =< python3.9 remove the dirst # to enable it
 werkzeug
 importlib
 Blueprint
@@ -22,9 +22,11 @@ pymysql
 pytz
 pycountry
 sip
+pyqt5-sip
 lxml
 plotly
 plotly-express
+python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 
 #PostgreSQL support remove the # of following line
 #psycopg2
