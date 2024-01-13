@@ -83,7 +83,7 @@
 		$('[name="dashx"]').load("{{ url_for('static', filename='htm/src/tmp.htm') }}");
 	});
 	$('[name="dash00"]').on('click', function(){
-		('[name="dashx"]').load("{{ url_for('static', filename='htm/src/dash00/dash00.htm') }}");
+		$('[name="dashx"]').load("{{ url_for('static', filename='htm/src/dash00/dash00.htm') }}");
 	});
 	$('[name="dash01"]').on('click', function(){
 		alert('dash1 HTML file should be /static/htm/src/<dash01>/dash01.htm');
