@@ -21,6 +21,7 @@ SQLAlchemy
 pymysql
 pytz
 pycountry
+qrcode
 sip
 pyqt5-sip
 lxml
