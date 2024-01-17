@@ -16,7 +16,7 @@ flask_login
 flask_ckeditor
 flask_WTF
 pgpy
-pyopenssl==22.1.0
+pyopenssl
 SQLAlchemy
 pymysql
 pytz
