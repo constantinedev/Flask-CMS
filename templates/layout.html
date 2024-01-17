@@ -97,7 +97,7 @@
 						$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
 					});
 				</script>
-			{% if pag=="home" %}
+			{% elif pag=="home" %}
 				<script>
 					$(document).ready(function () {
 						$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
