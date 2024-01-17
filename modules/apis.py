@@ -45,8 +45,8 @@ async def tokMaker(uname_, phass_):
   
 async def tokRecovery(token):
   uname_, phass_ = str(token).strip(":")
-  uname = base64.decode(uname_.encode("UTF-8"))
-  phass = base64.decode(phass_.encode("UTF-8"))
+  uname = base64.b16decode(uname_.encode("UTF-8"))
+  phass = base64.b16decode(phass_.encode("UTF-8"))
   return uname, phass
   
 async def pgpEnc(data, phass):
