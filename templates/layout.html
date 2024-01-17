@@ -91,11 +91,19 @@
 		</div>
 		{% else %}
 			<div class="content" id="content" name="content"></div>
-			<script>
-				$(document).ready(function() {
-					$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
-				});
-			</script>
+			{% if pag=="" %}
+				<script>
+					$(document).ready(function() {
+						$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
+					});
+				</script>
+			{% if pag=="home" %}
+				<script>
+					$(document).ready(function () {
+						$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
+					});
+				</script>
+			{% endif %}
 		{% endif %}
 
 	{% endblock main %}
