@@ -60,7 +60,7 @@
 			<div class="d-flex">				
 				<div class="btn-group" role="group">
 					{% if current_user.is_authenticated %}
-					<a class="btn btn-sm btn-primary" type="button" href="/dashboard?pag=dashboard">DASHBOARD</a>
+					<a class="btn btn-sm btn-primary" type="button" href="/dashboard">DASHBOARD</a>
 					<a class="btn btn-sm btn-primary" type="button" href="/panel">PANEL</a>
 					<a class="btn btn-sm btn-danger" type="button" href="/logout">LOG OUT</a>
 					{% else %}
@@ -91,18 +91,16 @@
 		</div>
 		{% else %}
 			<div class="content" id="content" name="content"></div>
-			{% if pag=="" %}
-				<script>
-					$(document).ready(function() {
-						$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
-					});
-				</script>
-			{% elif pag=="home" %}
+			{% if pag=="" or pag=="home" %}
 				<script>
 					$(document).ready(function () {
 						$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
 					});
 				</script>
+			{% else %}
+				<!-- Your can load your page by jscript upper example to directily 
+					after the last 2 else is already for pulice class viewer, here :)
+					elif pag == [vale]... -->
 			{% endif %}
 		{% endif %}
 
