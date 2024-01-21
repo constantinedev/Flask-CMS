@@ -1,4 +1,4 @@
-import re, os, io, sys, ast, ssl, csv, json, requests, sqlite_utils, pytz, pgpy, logging
+import re, os, io, sys, ast, ssl, csv, json, requests, sqlite_utils, base64, pytz, pgpy, pycountry, qrcode, qrcode.image.svg, logging
 from datetime import datetime as DT , timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
@@ -99,7 +99,14 @@ async def apis(version):
 @app.route('/dashboard', methods=["GET", "POST"])
 @login_required
 async def dashboard():
-  return await page_loader()
+  return await page_loader("dashboard")
+
+@app.route("/<page>", methods=["GET", "POST"])
+async def pageLader(page):
+  if page is not None:
+    return await page_loader(page)
+  else:
+    return redirect(url_for('index'))
 
 ### ckEditor Upload example ***
 # @app.route('/files/<path:filename>')
