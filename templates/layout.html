@@ -55,15 +55,17 @@
 			{% if current_user.is_authenticated %}
 			<span class="navbar-brand">Welcome {{ current_user.dpName }}</span>
 			{% else %}
-			<span class="navbar-brand">Welcome</span>
+			<span class="navbar-brand">Welcome Guest</span>
 			{% endif %}
 			<div class="d-flex">				
 				<div class="btn-group" role="group">
 					{% if current_user.is_authenticated %}
+					<span class="text-end mt-1" id="live_clock"></span>&nbsp;
 					<a class="btn btn-sm btn-primary" type="button" href="/dashboard">DASHBOARD</a>
 					<a class="btn btn-sm btn-primary" type="button" href="/panel">PANEL</a>
 					<a class="btn btn-sm btn-danger" type="button" href="/logout">LOG OUT</a>
 					{% else %}
+					<span class="text-end mt-1" id="live_clock"></span>&nbsp;
 					<a class="btn btn-sm btn-primary" type="button" href="{{ url_for('log_in') }}">LOG IN</a>
 					{% endif %}
 				</div>
@@ -81,28 +83,7 @@
 	{% block main %}
 		
 		<!-- place content here -->
-		{% if current_user.is_authenticated %}
-		<div class="content" id="content" name="content">
-			{% if pag=="home" %}
-				{% include 'theam/home.html' %}
-			{% elif pag=="dashboard" %}
-				{% include 'plugins/dashboard/main.htm' %}
-			{% endif %}
-		</div>
-		{% else %}
-			<div class="content" id="content" name="content"></div>
-			{% if pag=="" or pag=="home" %}
-				<script>
-					$(document).ready(function () {
-						$('[name="content"]').load('{{ url_for("static", filename="htm/index.html") }}');
-					});
-				</script>
-			{% else %}
-				<!-- Your can load your page by jscript upper example to directily 
-					after the last 2 else is already for pulice class viewer, here :)
-					elif pag == [vale]... -->
-			{% endif %}
-		{% endif %}
+		{% include 'theam/home.html' %}
 
 	{% endblock main %}
 	<div class="fix-footer"></div>
