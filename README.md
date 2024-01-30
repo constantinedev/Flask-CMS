@@ -1,10 +1,10 @@
 # Flask - CMS
 
-This is the full custom demo for developer provide use Flask, You can run this Flask App with some configure with you system.
-Very Thanks For kind of the opensource module. To support any posiblae function with Javascript and Python.
-Note to all the dear developers, kind of the modues are not support of with you are run with 32bit or 64bit python version.
-In this template, We have update and alert user to know, we have use `async def` and normal `def` for function.
-Check your
+This is the full custom demo for developer provide use Flask, You can run this Flask App with some configure with you system.<br>
+Very Thanks For kind of the opensource module. To support any posiblae function with Javascript and Python.<br>
+Note to all the dear developers, kind of the modues are not support of with you are run with 32bit or 64bit python version.<br>
+In this template, We have update and alert user to know, we have use `async def` and normal `def` for function.<br>
+Check your<br>
 This is the following module we ued in this DEMO project.
 
 * Flask
@@ -37,23 +37,23 @@ Also you can make your favourite text editor or more plugin.
 
 ## Update
 
-We have to move kind of the function from the corss with self build APIs list,
+We have to move kind of the function from the corss with self build APIs list,<br>
 In file `modules/apis.py` we have build kind of the default and open free functions include:
 
 1. Tor / Nor `gun_shell` requests, we have build it with `asyncio` and `aiohttp`, you can also install tor for requesting `.onion` address.
-2. jwt Create, yes, we have try something open source persion trust for defances scam and ddos attack to your apps.
+2. jwt Create, yes, we have try something open source persion trust for defances scam and ddos attack to your apps.<br>
    basic can make permission with your api requests.
-3. GPG Message - We user GnuPG encrypt for singal function, with this demo jwt encodeing
-   sure you can use your coustom password generator to build with it, but if you need to use `pgpy`
+3. GPG Message - We user GnuPG encrypt for singal function, with this demo jwt encodeing<br>
+   sure you can use your coustom password generator to build with it, but if you need to use `pgpy`<br>
    make flash with pip or update with `python3 -m pip install -U -r request.txt`
-4. QRCode - By QR code build with SVG/HTML support return.
+4. QRCode - By QR code build with SVG/HTML support return.<br>
    Make your between devices can crose over read and run your sevices.
 
 More of the usage, in each default APIs function, welcome leave me an `issues`
 
 ## Configure The Demo
 
-To Run the Flask-CMS, you should install the python3 version.
+To Run the Flask-CMS, you should install the python3 version.<br>
 Support any browser with no plugin or cookies blocking.
 
 1. Create your app [SECRET_KEY ](https://flask.palletsprojects.com/en/2.2.x/config/#SECRET_KEYhttps://)
