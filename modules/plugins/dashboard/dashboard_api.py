@@ -5,13 +5,12 @@ from flask import Flask, Blueprint, request, make_response, Response, jsonify, r
 
 async def page_loader(page):
 	if request.method == "GET":
-		# page = request.args.get('pag')
 		if page=="dashboard":
 			return render_template('plugins/dashboard/main.htm', pag="dashboard", title="Dashboard")
 		elif page == "home" or page == "" or page is None:
 			return render_template('layout.html', pag='home', title="Dashboard")
 		else:
-			return render_template('layout.html', pag=page, title="Dashboard")
+			return redirect(f'/?pag{page}')
 
 	if request.method == "POST":
 		apis = request.args.get('apis')
