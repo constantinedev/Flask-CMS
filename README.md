@@ -29,10 +29,10 @@ Free for Open!!!
 ![image](https://github.com/constantinedev/Flask-CMS/assets/1324252/51ad0f56-07df-4959-903f-6cb096c95df6)
 
 For the basic This Demo will show you the basic secuirty login and, How to update the data with SQLite Database.<br>
-What does it means? If you need the custom order, content this project developer for make a user require.
-We free out the SQLAlchemy to use the sqlite_utils to connect with the DB.
-That means in our develop can make most different DB connections.
-We are also many thank for Tiny MCE support the javascript plugin for this demo.
+What does it means? If you need the custom order, content this project developer for make a user require.<br>
+We free out the SQLAlchemy to use the sqlite_utils to connect with the DB.<br>
+That means in our develop can make most different DB connections.<br>
+We are also many thank for Tiny MCE support the javascript plugin for this demo.<br>
 Also you can make your favourite text editor or more plugin.
 
 ## Update
