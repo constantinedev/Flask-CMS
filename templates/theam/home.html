@@ -1,26 +1,42 @@
 <div class="admin-status">
 	<nav class="navbar navbar-expand-sm" name="admin-debug">		
 		{% if current_user.is_authenticated %}
-			<span class="navbar-brand w-100">Welcom {{current_user.dpName}}</span>
+			<!-- <span class="navbar-brand w-100">Welcom {{current_user.dpName}}</span> -->
 		{% else %}
-			<span class="navbar-brand">Welcom Guest</span>	
+			<!-- <span class="navbar-brand">Welcom Guest</span> -->
 		{% endif %}
 				
 		{% if current_user.is_authenticated %}
 			<!-- <a type="button" class="btn btn-outline-danger" href="/logout">LOGOUT</a> -->
-			<span class="text-end w-100" id="live_clock"></span>
+			<!-- <span class="text-end w-100" id="live_clock"></span> -->
 		{% else %}
-			<span class="text-end w-100" id="live_clock"></span>
+			<!-- <span class="text-end w-100" id="live_clock"></span> -->
 		{% endif %}
 	</nav>
 </div>
 
+<div class="content" id="content" name="content"></div>
 {% if current_user.is_authenticated %}
-	<script>
-		$('.content').load("{{ url_for('static', filename='htm/content.html') }}");
-	</script>
-{% else %}
+	{% if pag=="home" %}
+		<script>
+			$('.content').load("{{ url_for('static', filename='htm/content.html') }}");
+		</script>
+	
+	{% else %}
+		<script>
+			$('.content').load("{{ url_for('static', filename='htm/content.html') }}");
+		</script>
+	{% endif %}
+
+{% else %}	
+	{% if pag == "home" %}
 	<script>
 		$('.content').load("{{ url_for('static', filename='htm/index.html') }}");
 	</script>
+	
+	{% else %}
+	<script>
+		$('.content').load("{{ url_for('static', filename='htm/index.html') }}");
+	</script>
+	{% endif %}
 {% endif %}
