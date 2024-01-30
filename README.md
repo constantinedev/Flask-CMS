@@ -4,7 +4,7 @@ This is the full custom demo for developer provide use Flask, You can run this F
 Very Thanks For kind of the opensource module. To support any posiblae function with Javascript and Python.
 Note to all the dear developers, kind of the modues are not support of with you are run with 32bit or 64bit python version.
 In this template, We have update and alert user to know, we have use `async def` and normal `def` for function.
-Check your user needs to custom the route function in python script.
+Check your 
 This is the following module we ued in this DEMO project.
 
 * Flask
@@ -34,22 +34,6 @@ We free out the SQLAlchemy to use the sqlite_utils to connect with the DB.
 That means in our develop can make most different DB connections.
 We are also many thank for Tiny MCE support the javascript plugin for this demo.
 Also you can make your favourite text editor or more plugin.
-
-## Update
-
-We have to move kind of the function from the corss with self build APIs list,
-In file `modules/apis.py` we have build kind of the default and open free functions include:
-
-1. Tor / Nor `gun_shell` requests, we have build it with `asyncio` and `aiohttp`, you can also install tor for requesting `.onion` address.
-2. jwt Create, yes, we have try something open source persion trust for defances scam and ddos attack to your apps.
-   basic can make permission with your api requests.
-3. GPG Message - We user GnuPG encrypt for singal function, with this demo jwt encodeing
-   sure you can use your coustom password generator to build with it, but if you need to use `pgpy`
-   make flash with pip or update with `python3 -m pip install -U -r request.txt`
-4. QRCode - By QR code build with SVG/HTML support return.
-   Make your between devices can crose over read and run your sevices.
-
-More of the usage, in each default APIs function, welcome leave me an `issues` 
 
 ## Configure The Demo
 
