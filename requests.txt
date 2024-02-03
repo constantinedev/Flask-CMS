@@ -27,7 +27,7 @@ pyqt5-sip
 lxml
 plotly
 plotly-express
-python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
+# python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 
 #PostgreSQL support remove the # of following line
 #psycopg2
