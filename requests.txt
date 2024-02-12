@@ -17,7 +17,7 @@ flask_ckeditor
 flask_WTF
 pgpy
 pyopenssl
-pandas[excel]
+pandas"[computation, plot, output-formatting, html, xml, postgresql, mysql, sql-other, feather, spss, hdf5, gcp, clipboard, compression]"
 SQLAlchemy
 pymysql
 pytz
