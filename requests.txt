@@ -17,6 +17,7 @@ flask_ckeditor
 flask_WTF
 pgpy
 pyopenssl
+pandas[excel]
 SQLAlchemy
 pymysql
 pytz
