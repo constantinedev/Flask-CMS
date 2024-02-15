@@ -16,7 +16,7 @@ async def api_loader(version):
     if version == "v2":
       return await api_v2()
     else:
-      return redirect('/error_page')
+      return abort(404)
       
 async def api_v1():
   reqType = request.args.get('info')
