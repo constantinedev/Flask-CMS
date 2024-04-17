@@ -28,6 +28,8 @@ pyqt5-sip
 lxml
 plotly
 plotly-express
+PyWavefront
+random-user-agent
 # python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 
 #PostgreSQL support remove the # of following line
