@@ -17,7 +17,7 @@ flask_ckeditor
 flask_WTF
 pgpy
 pyopenssl
-# "pandas[computation, plot, output-formatting, html, xml, mysql, sql-other, feather, spss, hdf5, excel, gcp, clipboard, compression]"
+# "pandas[performance, computation, plot, output-formatting, html, xml, mysql, sql-other, feather, spss, hdf5, excel, fss, gcp, clipboard, compression]"
 SQLAlchemy
 pymysql
 pytz
