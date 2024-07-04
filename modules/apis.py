@@ -60,7 +60,7 @@ async def pgpDec(data, phass):
 async def svgQRmaker(src):
   qr = qrcode.QRcode(image_factory=qrcode.image.svg.SvgPathFillImage)
   qr.add_data(src)
-  qr.make(fit=False)
+  qr.make(fit=True)
   img = qr.make_image(attrib={'class': 'vQR'})
   svgImg = img.to_string(encoding="unicode")
   return svgImg
