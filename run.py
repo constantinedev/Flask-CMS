@@ -26,6 +26,9 @@ app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
 app.config['CKEDITOR_FILE_UPLOADER'] = 'uploads'
 app.config['CKEDITOR_HEIGHT'] = 900
 
+modules_bp = Blueprint('modules', __name__, template_folder='templates', static_folder='static')
+app.register_blueprint(modules_bp)
+
 if app.testing:
   app.config['WTF_CSRF_ENABLED'] = False
     
