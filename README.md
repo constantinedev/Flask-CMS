@@ -1,10 +1,10 @@
 # Flask - CMS
 
-This is the full custom demo for developer provide use Flask, You can run this Flask App with some configure with you system.`<br>`
-Very Thanks For kind of the opensource module. To support any posiblae function with Javascript and Python.`<br>`
-Note to all the dear developers, kind of the modues are not support of with you are run with 32bit or 64bit python version.`<br>`
-In this template, We have update and alert user to know, we have use `async def` and normal `def` for function.`<br>`
-Check your`<br>`
+This is the full custom demo for developer provide use Flask, You can run this Flask App with some configure with you system.
+Very Thanks For kind of the opensource module. To support any posiblae function with Javascript and Python.
+Note to all the dear developers, kind of the modues are not support of with you are run with 32bit or 64bit python version.
+In this template, We have update and alert user to know, we have use `async def` and normal `def` for function.
+Check your
 This is the following module we ued in this DEMO project.
 
 * Flask
