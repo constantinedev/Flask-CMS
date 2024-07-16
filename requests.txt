@@ -3,9 +3,13 @@ six
 tox
 wheel
 pillow
+pysocket
+socks
+configparser
 numpy
 requests
 sqlite_utils
+pysqlite3
 # matplotlib #if =< python3.9 remove the dirst # to enable it
 werkzeug
 importlib
