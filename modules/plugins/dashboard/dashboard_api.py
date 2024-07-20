@@ -10,7 +10,7 @@ async def page_loader(page):
 		elif page == "home" or page == "" or page is None:
 			return render_template('layout.html', pag='home', title="Dashboard")
 		else:
-			return redirect(f'/?pag{page}')
+			return redirect(f'/?pag={page}')
 
 	if request.method == "POST":
 		apis = request.args.get('apis')
