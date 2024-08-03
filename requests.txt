@@ -2,10 +2,14 @@ pip
 six
 tox
 wheel
-pillow
-numpy
+pillow==9.4.0
+pysocket
+socks
+configparser
+numpy==1.26.4
 requests
 sqlite_utils
+pysqlite3
 # matplotlib #if =< python3.9 remove the dirst # to enable it
 werkzeug
 importlib
@@ -22,14 +26,17 @@ SQLAlchemy
 pymysql
 pytz
 pycountry
-qrcode
+qrcode[pil]
 sip
 pyqt5-sip
 lxml
 plotly
 plotly-express
 PyWavefront
+face-recognition
 random-user-agent
+schedule
+rpi.gpio
 # python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 
 #PostgreSQL support remove the # of following line
