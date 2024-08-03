@@ -33,10 +33,10 @@ lxml
 plotly
 plotly-express
 PyWavefront
-face-recognition
+#face-recognition
 random-user-agent
 schedule
-rpi.gpio
+#rpi.gpio
 # python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 
 #PostgreSQL support remove the # of following line
