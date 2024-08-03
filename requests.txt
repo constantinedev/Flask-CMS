@@ -9,7 +9,7 @@ configparser
 numpy==1.26.4
 requests
 sqlite_utils
-pysqlite3
+#pysqlite3
 # matplotlib #if =< python3.9 remove the dirst # to enable it
 werkzeug
 importlib
