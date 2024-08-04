@@ -58,7 +58,7 @@ async def pgpDec(data, phass):
   return txtMsg
 
 async def svgQRmaker(src):
-  qr = qrcode.QRCode(version=5, box_size=15, border=2, image_factory=qrcode.image.svg.SvgPathFillImage)
+  qr = qrcode.QRCode(version=5, box_size=10, border=0, image_factory=qrcode.image.svg.SvgPathFillImage)
   qr.add_data(src)
   qr.make(fit=True)
   img = qr.make_image(attrib={'class': 'vQR'})
