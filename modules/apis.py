@@ -36,6 +36,14 @@ async def QueryFunction():
   }
   return jsonify(json_data), 200
 
+async def FX_2FA(user_token):
+  totp_auth = pyotp.totp.TOTP(user_token).provisioning_uri(
+    name="Delete Me when debug",
+    issuer_name = "Custom 2FA"
+  )
+  qrIMAGE = await svgQRmaker(totp_auth)
+  return qrIMAGE
+
 async def jwtMaker(token, phass):
 	jsonData = {
 		"data":token,
