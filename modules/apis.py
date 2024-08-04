@@ -2,7 +2,7 @@ import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, py
 from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
-import pycountry, qrcode, qrcode.image.svg
+import pycountry, qrcode, qrcode.image.svg, qrcode.constants
 
 from modules.aioRequests import gun_shell
 
@@ -58,7 +58,7 @@ async def pgpDec(data, phass):
   return txtMsg
 
 async def svgQRmaker(src):
-  qr = qrcode.QRCode(version=5, box_size=10, border=0, image_factory=qrcode.image.svg.SvgPathFillImage)
+  qr = qrcode.QRCode(version=5, box_size=10, border=0, error_correction=qrcode.constants.ERROR_CORRECT_L, image_factory=qrcode.image.svg.SvgPathFillImage)
   qr.add_data(src)
   qr.make(fit=True)
   img = qr.make_image(attrib={'class': 'vQR'})
