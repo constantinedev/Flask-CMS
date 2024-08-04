@@ -1,8 +1,8 @@
-import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, pytz, pgpy, base64, logging
+import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, pytz, pgpy, jwt, base64, logging
 from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
-import pycountry, qrcode, qrcode.image.svg, qrcode.constants
+import pycountry, pyotp, qrcode, qrcode.image.svg, qrcode.constants
 
 from modules.aioRequests import gun_shell
 
@@ -35,6 +35,18 @@ async def QueryFunction():
     "response": "Query Function Ready Connect"
   }
   return jsonify(json_data), 200
+
+async def jwtMaker(token, phass):
+	jsonData = {
+		"data":token,
+		"exp": DT.now(TZ.utc) + TD(minutes=15)
+	}
+	encoded = jwt.encode(jsonData, phass, algorithm="HS512")
+	return encoded
+
+async def jwtRecovery(Str, phass):
+	data = jwt.decode(Str, phass, algorithms=["HS512"])
+	return data
 
 async def tokMaker(uname_, phass_):
   if uname_ is not None and phass_ is not None:
