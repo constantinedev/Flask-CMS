@@ -83,4 +83,4 @@ async def CountryList():
         countryList.append(_da)
       else:
         pass
-  return Response(json.dumps(countryList, ensure_ascii=False), content_type="application/json"), 200
+  return jsonify(countryList), 200
