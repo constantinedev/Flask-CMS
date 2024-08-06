@@ -9,8 +9,8 @@ from system.setup import login
 from system.panel import set_password, check_password, panel_api, register, sing_in, sing_out, img_uploader
 
 from modules.plugins.blogger.blog import blog_api
-from modules.plugins.dashboard.dashboard_api import page_loader
-from modules.apis import api_loader
+from modules.plugins.dashboard.dashboard_api import dashboard_panel
+from modules.apis import api_loader, page_loader
 
 session = requests.session()
 session.proxies = {}
@@ -102,7 +102,7 @@ async def apis(version):
 @app.route('/dashboard', methods=["GET", "POST"])
 @login_required
 async def dashboard():
-  return await page_loader("dashboard")
+  return await dashboard_panel()
 
 @app.route("/<page>", methods=["GET", "POST"])
 async def pageLader(page):
