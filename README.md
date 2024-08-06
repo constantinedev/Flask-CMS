@@ -30,7 +30,6 @@ We have same make the template empty page for the dashboard with file `plugins/d
 Now you can create and setup your free code free API, easy convert and display with web html.<br>
 Free for Open!!!</p>
 
-
 ![image](https://user-images.githubusercontent.com/1324252/217410498-87566f7c-4194-48b1-ae58-e1c332a90212.png)
 
 ### !!!NEW!!! Dashboard & Nav For FREE!
@@ -52,7 +51,7 @@ In file `modules/apis.py` we have build kind of the default and open free functi
 1. Tor / Nor `gun_shell` requests, we have build it with `asyncio` and `aiohttp`, you can also install tor for requesting `.onion` address.
 2. jwt Create, yes, we have try something open source persion trust for defances scam and ddos attack to your apps.`<br>`
    basic can make permission with your api requests.
-3. GPG Message - We user GnuPG encrypt for singal function, with this demo jwt encodeing`<br>`
+3. GPG Message - We user GnuPG encrypt for singal function, with this demo jwt encodeing `<br>`
    sure you can use your coustom password generator to build with it, but if you need to use `pgpy<br>`
    make flash with pip or update with `python3 -m pip install -U -r request.txt`
 4. QRCode - By QR code build with SVG/HTML support return.`<br>`
@@ -142,4 +141,4 @@ More idea please try to make user require with Email: messiaht@pm.me
 
 ### Where can find us?
 
-This is the Developer of [LinkIn](https://www.linkedin.com/in/freeman-constantine-654341236/https://)Flask-CMS
+This is the Developer of [LinkedIn](https://www.linkedin.com/in/freeman-constantine-654341236/https://) Flask-CMS
