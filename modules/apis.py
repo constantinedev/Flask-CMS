@@ -5,6 +5,25 @@ from flask import Flask, Blueprint, request, make_response, Response, jsonify, r
 import pycountry, pyotp, qrcode, qrcode.image.svg, qrcode.constants
 
 from modules.aioRequests import gun_shell
+from modules.plugins.dashboard.dashboard_api import dashboard_panel
+
+async def page_loader(page):
+	if request.method == "GET":
+		if page=="dashboard":
+			return await dashboard_panel()
+
+		elif page == "home" or page == "" or page is None:
+			return render_template('layout.html', pag='home', title="Dashboard")
+		else:
+			return redirect(f'/?pag={page}')
+
+	if request.method == "POST":
+		apis = request.args.get('apis')
+		if apis == "" or apis is None:
+			return redirect(url_for("/error_page"))
+		else:
+			retu_json = request.get_json()
+			return jsonify(retu_json), 200
 
 async def api_loader(version):
   if request.method == "GET":
