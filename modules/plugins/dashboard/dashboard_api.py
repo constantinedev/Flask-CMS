@@ -2,11 +2,13 @@ import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, pytz, pgpy,
 from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
+from flask_login import current_user
 
 async def page_loader(page):
 	if request.method == "GET":
 		if page=="dashboard":
-			return render_template('plugins/dashboard/main.htm', pag="dashboard", title="Dashboard")
+			return await dashboard_panel()
+
 		elif page == "home" or page == "" or page is None:
 			return render_template('layout.html', pag='home', title="Dashboard")
 		else:
@@ -19,3 +21,14 @@ async def page_loader(page):
 		else:
 			retu_json = request.get_json()
 			return jsonify(retu_json), 200
+
+async def dashboard_panel():
+	if current_user.is_authenticated:
+		content = render_template('plugins/dashboard/main.htm', pag="dashboard", title="Dashboard")
+		response = make_response(content)
+		response.headers['token'] = current_user.token
+		return response
+	else:
+		content = render_template('plugins/dashboard/main.htm', pag="dashboard", title="Dashboard")
+		response = make_response(content)
+		return response
