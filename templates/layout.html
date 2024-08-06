@@ -54,6 +54,9 @@
 		<div class="container-fluid">
 			{% if current_user.is_authenticated %}
 			<span class="navbar-brand">Welcome {{ current_user.dpName }}</span>
+			<div class="agent_info" style="display:none;">
+				<input type="text" id="agent_prof" name="agent_prof" value="{{current_user.token}}" />
+			</div>
 			{% else %}
 			<span class="navbar-brand">Welcome Guest</span>
 			{% endif %}
