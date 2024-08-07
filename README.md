@@ -56,6 +56,8 @@ In file `modules/apis.py` we have build kind of the default and open free functi
    make flash with pip or update with `python3 -m pip install -U -r request.txt`
 4. QRCode - By QR code build with SVG/HTML support return.`<br>`
    Make your between devices can crose over read and run your sevices.
+5. We finally break out the `page_loader` for the APIs, as we defind page load and redirect the function somehtings will me multily recall process,
+   So now I make sure the `'page_loader` to your script's file and you can recall `apis` and `self-modules` you need.
 
 More of the usage, in each default APIs function, welcome leave me an `issues`
 
