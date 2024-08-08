@@ -11,7 +11,6 @@ from system.panel import set_password, check_password, panel_api, register, sing
 from system.page_loader import page_loader
 from modules.apis import api_loader
 from modules.plugins.blogger.blog import blog_api
-from modules.plugins.dashboard.dashboard_api import dashboard_panel
 
 session = requests.session()
 session.proxies = {}
