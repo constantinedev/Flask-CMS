@@ -27,3 +27,5 @@ async def dashboard_panel(page):
 	if request.method == "POST":
 		pag = request.args.get('pag')
 		info = request.args.get('info')
+		#####
+		### Function response on POST start here
