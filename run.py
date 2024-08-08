@@ -31,7 +31,7 @@ app.register_blueprint(modules_bp)
 
 if app.testing:
   app.config['WTF_CSRF_ENABLED'] = False
-    
+
 login.init_app(app)
 login.login_view = '/login'
 
