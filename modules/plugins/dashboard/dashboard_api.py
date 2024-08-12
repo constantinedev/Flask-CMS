@@ -4,6 +4,8 @@ from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort
 from flask_login import current_user
 
+from modules.cmsmod import pgpEnc, pgpDec, jwtMaker, jwtRecovery, tokMaker, tokRecovery, FX_2FA, CountryList, QueryFunction, svgQRmaker
+
 async def dashboard_panel(page):
 	if request.method == "GET":
 		info = request.args.get('info')
