@@ -6,7 +6,7 @@ from flask_login import UserMixin, LoginManager, login_required, current_user, l
 from werkzeug.security import generate_password_hash, check_password_hash
 from system.setup import agent, login
 
-from modules.apis import tokMaker, pgpEnc, pgpDec
+from modules.cmsmod import tokMaker, pgpEnc, pgpDec
 
 def set_password(password):
 	return generate_password_hash(password, method="pbkdf2:sha256")
