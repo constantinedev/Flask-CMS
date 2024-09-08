@@ -104,7 +104,7 @@ async def apis(version):
 async def dashboard():
   return await page_loader('dashboard')
 
-@app.route("/<page>", methods=["GET", "POST"])
+@app.route("/<page>/", methods=["GET", "POST"])
 async def pageLader(page):
   if page is not None:
     return await page_loader(page)
