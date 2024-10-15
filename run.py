@@ -95,7 +95,7 @@ def user_conf(config):
       print('demo')
     return 'TEST Today' + str(DT.now())
 
-@app.route("/apis/<version>/", methods=["GET", "POST"])
+@app.route("/api/<version>/", methods=["GET", "POST"])
 async def apis(version):
   return await api_loader(version)
 
