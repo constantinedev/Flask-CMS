@@ -5,9 +5,10 @@ wheel
 pillow==9.4.0
 pysocket
 socks
+asyncio
 configparser
 numpy==1.24.3
-requests
+requests[socsks]
 sqlite_utils
 #pysqlite3
 # matplotlib #if =< python3.9 remove the dirst # to enable it
@@ -18,9 +19,12 @@ flask[async]
 flask_admin
 flask_login
 flask_ckeditor
+bleach
 flask_WTF
 pgpy
-pyopenssl
+pyopenssl==22.1.0
+pyjwt
+pyotp
 # "pandas[performance, computation, plot, output-formatting, html, xml, mysql, sql-other, feather, spss, hdf5, excel, fss, gcp, clipboard, compression]"
 SQLAlchemy
 pymysql
@@ -29,7 +33,10 @@ pycountry
 qrcode[pil]
 sip
 pyqt5-sip
+bs4
+cloudscraper
 lxml
+html5lib
 plotly
 plotly-express
 PyWavefront
