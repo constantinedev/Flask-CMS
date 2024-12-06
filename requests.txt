@@ -46,5 +46,11 @@ schedule
 #rpi.gpio
 # python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 
+#3D modules
+gltflib
+pygltflib
+PyWavefront
+vobject
+
 #PostgreSQL support remove the # of following line
 #psycopg2
