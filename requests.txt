@@ -7,10 +7,10 @@ pysocket
 socks
 configparser
 numpy==1.24.3
-requests
+requests[socks]
 sqlite_utils
-#pysqlite3
-# matplotlib #if =< python3.9 remove the dirst # to enable it
+pysqlite3-binary
+matplotlib #if =< python3.9 remove the dirst # to enable it
 werkzeug
 importlib
 Blueprint
@@ -26,9 +26,10 @@ SQLAlchemy
 pymysql
 pytz
 pycountry
+pyproject
 qrcode[pil]
 sip
-pyqt5-sip
+#pyqt5-sip
 lxml
 plotly
 plotly-express
@@ -36,6 +37,8 @@ PyWavefront
 #face-recognition
 random-user-agent
 schedule
+pyjwt
+pyotp
 #rpi.gpio
 # python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 
