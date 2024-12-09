@@ -104,6 +104,7 @@ async def apis(version):
 async def dashboard():
   return await page_loader('dashboard')
 
+### OUTER WEB PAGE REFIRECT INDEX
 @app.route("/<page>/", methods=["GET", "POST"])
 async def pageLader(page):
   if page is not None:
