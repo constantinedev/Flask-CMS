@@ -6,7 +6,7 @@ pillow==9.4.0
 pysocket
 socks
 configparser
-numpy==1.24.3
+numpy
 requests[socks]
 sqlite_utils
 matplotlib #if =< python3.9 remove the dirst # to enable it
