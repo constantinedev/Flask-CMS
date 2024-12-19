@@ -17,6 +17,11 @@ async def gun_shell(url, method, type, headers, payload):
     headers={"User-Agent":user_agent, "Content-Type": 'application/json'}
   if payload=={} or payload is None:
     payload={}
+  elif payload is not None:
+    try:
+      payload = ast.literal_eval(payload)
+    except:
+      payload = json.loads(payload)
 
   if type=="nor":
     async with aiohttp.ClientSession() as session:
