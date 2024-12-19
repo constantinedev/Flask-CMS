@@ -13,16 +13,13 @@ async def dashboard_panel(page):
 		# if page == 'dashboard' and info == "weather":
 		# 	return await WeatherAPI()
 		
-		if page == 'dashboard':
-			if current_user.is_authenticated:
+		if current_user.is_authenticated:
+			if page == 'dashboard':
 				content = render_template('plugins/dashboard/main.htm', pag="dashboard", title="Dashboard")
 				response = make_response(content)
 				response.headers['token'] = current_user.token
 				return response
-			else:
-				content = render_template('plugins/dashboard/main.htm', pag="dashboard", title="Dashboard")
-				response = make_response(content)
-				return response
+			
 		else:
 			return redirect(f'/')
 
