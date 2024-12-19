@@ -130,4 +130,4 @@ async def pageLader(page):
 #     return upload_success(url, filename=f.filename)  # return upload_success call
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", port=8001, debug=True)
+  app.run(host="0.0.0.0", port=5001, debug=True)
