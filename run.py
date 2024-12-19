@@ -30,87 +30,87 @@ modules_bp = Blueprint('modules', __name__, template_folder='templates', static_
 app.register_blueprint(modules_bp)
 
 if app.testing:
-  app.config['WTF_CSRF_ENABLED'] = False
+	app.config['WTF_CSRF_ENABLED'] = False
 
 login.init_app(app)
 login.login_view = '/login'
 
 @app.route('/', methods=["GET", "POST"])
 def index():
-  if request.remote_addr == '127.0.0.1' or request.remote_addr == 'localhost':
-    pass
-  else:
-    sqlite_utils.Database('db/_sec.db')['req_rec'].insert({'ip': request.remote_addr, "user_agents": str(request.user_agent), "crt_date": str(DT.now())}, alter=True)
-    ip_recs =  list(sqlite_utils.Database('db/_sec.db')['req_rec'].rows_where("ip = ?", [request.remote_addr]))
-    count_recs = len(ip_recs)
-    if int(count_recs) < 100:
-      pass
-    else:
-      rm_recs = count_recs - 100
-      sqlite_utils.Database('db/_sec.db')['req_rec'].delete(where="data_colum > :rm_recs", rm_recs=rm_recs)
-      
-  if request.method == 'GET':
-    pag = request.args.get('pag')
-    if pag is not None:
-      return render_template('layout.html', pag=pag)
-    else:
-      return render_template('layout.html', pag="home")
+	if request.remote_addr == '127.0.0.1' or request.remote_addr == 'localhost':
+		pass
+	else:
+		sqlite_utils.Database('db/_sec.db')['req_rec'].insert({'ip': request.remote_addr, "user_agents": str(request.user_agent), "crt_date": str(DT.now())}, alter=True)
+		ip_recs =  list(sqlite_utils.Database('db/_sec.db')['req_rec'].rows_where("ip = ?", [request.remote_addr]))
+		count_recs = len(ip_recs)
+		if int(count_recs) < 100:
+			pass
+		else:
+			rm_recs = count_recs - 100
+			sqlite_utils.Database('db/_sec.db')['req_rec'].delete(where="data_colum > :rm_recs", rm_recs=rm_recs)
+			
+	if request.method == 'GET':
+		pag = request.args.get('pag')
+		if pag is not None:
+			return render_template('layout.html', pag=pag)
+		else:
+			return render_template('layout.html', pag="home")
 
 @app.errorhandler(404)
 def error_page(error):
-  return render_template("error.html", title=error), 404
+	return render_template("error.html", title=error), 404
 
 ### REGISTER
 @app.route('/regist', methods=["GET", "POST"])
 def reg_ac():
-  return register()
-  
+	return register()
+	
 ### LOGIN
 @app.route('/login', methods=["GET", "POST"])
 def log_in():
-  return sing_in()
-  
+	return sing_in()
+	
 ### LOG OUT
 @app.route('/logout')
 def log_out():
-  return sing_out()
+	return sing_out()
 
 ### CLT PANEL
 @app.route('/panel', methods=["GET", "POST"])
 @login_required
 def panel():
-  return panel_api()
+	return panel_api()
 
 @app.route('/panel/blogger', methods=["GET", "POST"])
 @login_required
 def blogger_mod():
-  return blog_api()
+	return blog_api()
 
 ### CMS PANEL API
 @app.route('/settings/<config>', methods=["GET", "POST"])
 @login_required
 def user_conf(config):
-  if request.method == "POST":
-    if config == 'update_profile':
-      print('demo')
-    return 'TEST Today' + str(DT.now())
-
-@app.route("/api/<version>/", methods=["GET", "POST"])
-async def apis(version):
-  return await api_loader(version)
+	if request.method == "POST":
+		if config == 'update_profile':
+			print('demo')
+		return 'TEST Today' + str(DT.now())
 
 @app.route('/dashboard', methods=["GET", "POST"])
 @login_required
 async def dashboard():
-  return await page_loader('dashboard')
+	return await page_loader("dashboard")
+
+@app.route("/api/<version>/", methods=["GET", "POST"])
+async def apis(version):
+	return await api_loader(version)
 
 ### OUTER WEB PAGE REFIRECT INDEX
 @app.route("/<page>/", methods=["GET", "POST"])
 async def pageLader(page):
-  if page is not None:
-    return await page_loader(page)
-  else:
-    return redirect(url_for('index'))
+	if page is not None:
+		return await page_loader(page)
+	else:
+		return redirect('/')
 
 ### ckEditor Upload example ***
 # @app.route('/files/<path:filename>')
@@ -130,4 +130,4 @@ async def pageLader(page):
 #     return upload_success(url, filename=f.filename)  # return upload_success call
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", port=5001, debug=True)
+	app.run(host="0.0.0.0", port=5001, debug=True)
