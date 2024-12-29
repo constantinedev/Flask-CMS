@@ -21,6 +21,9 @@ async def api_loader(version):
       
 async def api_v1():
   reqType = request.args.get('info')
+  if request.args.get('mod') == 'asktoken':
+    tok = await tokMaker(request.args.get('uname'), request.args.get('phass'))
+    return jsonify({'status': 200, "response": tok}), 200
   if reqType == "ctzinfo":
     return await CountryList()
   return jsonify({"status": 200, "response": "API v1 test comport"}), 200
