@@ -4,13 +4,22 @@ main {
 
 .content {
   /* min-height: 1200; */
+	height:100%;
 }
 
-body {
+html, body {
 	background-color: none;
+	height: 100%;
 	/* color: #000; */
-	font-size: 12pt;
+	/* color: #daf6ff; */
+	/* font-size: 12pt; */
 	font-family: monospace;
+	 /*background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 100%); */
+}
+
+a, a:hover, a:active, a.focus, .nav-item {
+	/* color: #daf6ff; */
+	/* text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0); */
 }
 
 .input-group-text {
