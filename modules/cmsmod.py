@@ -24,16 +24,16 @@ async def FX_2FA(user_token):
 	return qrIMAGE
 
 async def jwtMaker(token, phass):
-	jsonData = {
-		"data":token,
-		"exp": DT.now(TZ.utc) + TD(minutes=15)
-	}
-	encoded = jwt.encode(jsonData, phass, algorithm="HS512")
-	return encoded
+  jsonData = {
+    "data":token,
+    "exp": DT.now(TZ.utc) + TD(minutes=15)
+  }
+  encoded = jwt.encode(jsonData, phass, algorithm="HS512")
+  return encoded
 
 async def jwtRecovery(Str, phass):
-	data = jwt.decode(Str, phass, algorithms=["HS512"])
-	return data
+  data = jwt.decode(Str, phass, algorithms=["HS512"])
+  return data
 
 async def tokMaker(uname_, phass_):
 	if uname_ is not None and phass_ is not None:
@@ -65,21 +65,21 @@ async def svgQRmaker(src):
 	return svgImg
 
 async def CountryList():
-	countryList = []
-	all_countrys = pycountry.countries
-	for country in all_countrys:
-		timezones = pytz.country_timezones.get(country.alpha_2)
-		if timezones:
-			for timezone in timezones:
-				offset = DT.now(pytz.timezone(timezone)).strftime("%z")
-				offset = f"{offset[:-2]}:{offset[-2:]}"
-				_da = {
-					"country_code": country.alpha_2,
-					"timezone_offset": offset,
-					"country_name": country.name,
-					"timezone": timezone,
-				}
-				countryList.append(_da)
-			else:
-				pass
-	return jsonify(countryList), 200
+  countryList = []
+  all_countrys = pycountry.countries
+  for country in all_countrys:
+    timezones = pytz.country_timezones.get(country.alpha_2)
+    if timezones:
+      for timezone in timezones:
+        offset = DT.now(pytz.timezone(timezone)).strftime("%z")
+        offset = f"{offset[:-2]}:{offset[-2:]}"
+        _da = {
+          "country_code": country.alpha_2,
+          "timezone_offset": offset,
+          "country_name": country.name,
+          "timezone": timezone,
+        }
+        countryList.append(_da)
+      else:
+        pass
+  return jsonify(countryList), 200
