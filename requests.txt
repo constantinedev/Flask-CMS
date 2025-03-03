@@ -41,6 +41,8 @@ pyjwt
 pyotp
 #rpi.gpio
 # python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
+xlrd
+xlrd2
 
 #PostgreSQL support remove the # of following line
 #psycopg2
