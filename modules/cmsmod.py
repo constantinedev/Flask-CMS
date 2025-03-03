@@ -24,16 +24,16 @@ async def FX_2FA(user_token):
   return qrIMAGE
 
 async def jwtMaker(token, phass):
-	jsonData = {
-	  "data":token,
-	  "exp": DT.now(TZ.utc) + TD(minutes=15)
-	}
-	encoded = jwt.encode(jsonData, phass, algorithm="HS512")
-	return encoded
+  jsonData = {
+    "data":token,
+    "exp": DT.now(TZ.utc) + TD(minutes=15)
+  }
+  encoded = jwt.encode(jsonData, phass, algorithm="HS512")
+  return encoded
 
 async def jwtRecovery(Str, phass):
-	data = jwt.decode(Str, phass, algorithms=["HS512"])
-	return data
+  data = jwt.decode(Str, phass, algorithms=["HS512"])
+  return data
 
 async def tokMaker(uname_, phass_):
   if uname_ is not None and phass_ is not None:
