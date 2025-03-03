@@ -25,8 +25,8 @@ async def FX_2FA(user_token):
 
 async def jwtMaker(token, phass):
 	jsonData = {
-		"data":token,
-		"exp": DT.now(TZ.utc) + TD(minutes=15)
+	  "data":token,
+	  "exp": DT.now(TZ.utc) + TD(minutes=15)
 	}
 	encoded = jwt.encode(jsonData, phass, algorithm="HS512")
 	return encoded
