@@ -13,11 +13,15 @@ html, body {
 	/* color: #000; */
 	/* color: #daf6ff; */
 	/* font-size: 12pt; */
-	font-family: monospace;
+	font-family: monospace !important;
 	 /*background: radial-gradient(ellipse at center, #0a2e38 0%, #000000 100%); */
 }
 
-a, a:hover, a:active, a.focus, .nav-item {
+a,
+a:hover,
+a:active,
+a.focus,
+.nav-item {
 	/* color: #daf6ff; */
 	/* text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0); */
 }
