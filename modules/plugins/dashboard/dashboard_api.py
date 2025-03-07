@@ -9,9 +9,7 @@ from modules.cmsmod import pgpEnc, pgpDec, jwtMaker, jwtRecovery, tokMaker, tokR
 async def dashboard_panel(page):
 	if request.method == "GET":
 		info = request.args.get('info')
-		
-		# if page == 'dashboard' and info == "weather":
-		# 	return await WeatherAPI()
+		mod = request.args.get('mod')
 		
 		if current_user.is_authenticated:
 			if page == 'dashboard':
@@ -19,12 +17,12 @@ async def dashboard_panel(page):
 				response = make_response(content)
 				response.headers['token'] = current_user.token
 				return response
-			
 		else:
 			return redirect(f'/')
 
 	if request.method == "POST":
 		pag = request.args.get('pag')
 		info = request.args.get('info')
+		mod = request.args.get('mod')
 		#####
 		### Function response on POST start here
