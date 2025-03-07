@@ -41,6 +41,8 @@ async def tokMaker(uname_, phass_):
 		phass = base64.b16encode(str(phass_).encode("UTF-8")).decode("UTF-8")
 		token = f"{uname}:{phass}"
 		return token
+	else:
+		return abort(404)
 	
 async def tokRecovery(token):
 	uname_, phass_ = str(token).strip(":")
