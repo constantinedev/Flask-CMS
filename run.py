@@ -43,13 +43,13 @@ def index():
 		pass
 	else:
 		sqlite_utils.Database('db/_sec.db')['req_rec'].insert({'ip': request.remote_addr, "user_agents": str(request.user_agent), "crt_date": str(DT.now())}, alter=True)
-		ip_recs =  list(sqlite_utils.Database('db/_sec.db')['req_rec'].rows_where("ip = ?", [request.remote_addr]))
-		count_recs = len(ip_recs)
-		if int(count_recs) < 100:
-			pass
-		else:
-			rm_recs = count_recs - 100
-			sqlite_utils.Database('db/_sec.db')['req_rec'].delete(where="data_colum > :rm_recs", rm_recs=rm_recs)
+
+		count_recs = sqlite_utils.Database('db/_sec.db')['req_rec'].count_where("ip = ?", [request.remote_addr])
+		if count_recs > 10:
+			to_delete =  list(sqlite_utils.Database('db/_sec.db')['req_rec'].rows_where("ip = ?", [request.remote_addr], order_by="crt_date", select="rowid"))[:-10]
+			if to_delete:
+				for row in to_delete:
+					sqlite_utils.Database('db/_sec.db')['req_rec'].delete(row["rowid"])
 			
 	if request.method == 'GET':
 		pag = request.args.get('pag')
