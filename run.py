@@ -1,13 +1,15 @@
-import re, os, io, sys, ast, ssl, csv, json, base64, configparser, requests, sqlite_utils, pytz, pgpy, pycountry, qrcode, qrcode.image.svg, logging
+import re, io, os, sys, ast, ssl, csv, json, base64, configparser, requests, sqlite_utils, logging
 from datetime import datetime as DT , timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
+import pytz, pgpy, pycountry, qrcode, qrcode.image.svg
+
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
 from flask_ckeditor import CKEditor, upload_success, upload_fail, CKEditorField
 from werkzeug.middleware.proxy_fix import ProxyFix
+
 from system.setup import login
 from system.panel import set_password, check_password, panel_api, register, sing_in, sing_out, img_uploader
-
 from system.page_loader import page_loader
 from modules.apis import api_loader
 from modules.plugins.blogger.blog import blog_api
@@ -23,7 +25,7 @@ app.wsgi_app = ProxyFix(app.wsgi_app)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 ckeditor = CKEditor(app)
 app.config['CKEDITOR_SERVE_LOCAL'] = False
-app.config['CKEDITOR_CDN_URL'] = "https://cdn.ckeditor.com/4.25.1-lts/standard/ckeditor.js"
+app.config['CKEDITOR_CDN_URL'] = "https://cdn.ckeditor.com/4.25.1-lts/full-all/ckeditor.js"
 app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
 app.config['CKEDITOR_FILE_UPLOADER'] = 'uploads'
 app.config['CKEDITOR_HEIGHT'] = 900
