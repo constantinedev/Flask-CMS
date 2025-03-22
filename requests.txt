@@ -44,6 +44,11 @@ pyotp
 xlrd
 xlrd2
 python_socks
+pyxlsb
+python-calamine
+openpyxl
+xlsxwriter
+xlrd
 
 #PostgreSQL support remove the # of following line
 #psycopg2
