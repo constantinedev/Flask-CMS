@@ -19,7 +19,7 @@ flask_ckeditor
 flask_WTF
 pgpy
 pyopenssl
-# "pandas[performance, computation, plot, output-formatting, html, xml, mysql, sql-other, feather, spss, hdf5, excel, fss, gcp, clipboard, compression]"
+# "pandas[html, mysql, excel, performance, computation, plot, output-formatting, xml, sql-other, feather, spss, hdf5, fss, gcp, clipboard, compression]"
 #importlib
 #pysqlite3-binary
 SQLAlchemy
@@ -43,6 +43,7 @@ pyotp
 # python-olm --extra-index-url https://gitlab.matrix.org/api/v4/projects/27/packages/pypi/simple
 xlrd
 xlrd2
+python_socks
 
 #PostgreSQL support remove the # of following line
 #psycopg2
