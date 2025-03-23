@@ -2,7 +2,7 @@ import re, io, sys, os, ast, ssl, csv, json, requests, sqlite_utils, asyncio, py
 from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
-import pycountry, pyotp, qrcode, qrcode.image.svg, qrcode.constants
+import pycountry, pyotp, qrcode, qrcode.constants
 from qrcode.image.svg import SvgFillImage, SvgPathFillImage, SvgPathImage
 
 async def QueryFunction():
