@@ -3,6 +3,7 @@ from datetime import datetime as DT, timezone as TZ, timedelta as TD
 from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
 import pycountry, pyotp, qrcode, qrcode.image.svg, qrcode.constants
+from qrcode.image.svg import SvgFillImage, SvgPathFillImage, SvgPathImage
 
 async def QueryFunction():
 	json_data = {
@@ -59,7 +60,7 @@ async def pgpDec(data, phass):
 	return txtMsg
 
 async def svgQRmaker(src):
-	qr = qrcode.QRCode(version=5, box_size=10, border=0, error_correction=qrcode.constants.ERROR_CORRECT_L, image_factory=qrcode.image.svg.SvgPathFillImage)
+	qr = qrcode.QRCode(version=5, box_size=10, border=0, error_correction=qrcode.constants.ERROR_CORRECT_L, image_factory=SvgPathFillImage)
 	qr.add_data(src)
 	qr.make(fit=True)
 	img = qr.make_image(attrib={'class': 'vQR'})
