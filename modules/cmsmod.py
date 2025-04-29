@@ -4,6 +4,7 @@ from sqlite_utils.utils import sqlite3
 from flask import Flask, Blueprint, request, make_response, Response, jsonify, redirect, url_for, render_template, flash, abort, send_from_directory
 import pycountry, pyotp, qrcode, qrcode.constants
 from qrcode.image.svg import SvgFillImage, SvgPathFillImage, SvgPathImage
+from geopy.geocoders import Nominatim
 
 async def QueryFunction():
 	json_data = {
@@ -87,7 +88,7 @@ async def CountryList():
         pass
   return jsonify(countryList), 200
 
-	async def search_geo_by_addr(address):
+async def search_geo_by_addr(address):
 	geolocator = Nominatim(user_agent="geoapiExercises")
 	location = geolocator.geocode(address)
 	if location:
