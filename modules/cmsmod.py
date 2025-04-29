@@ -86,3 +86,27 @@ async def CountryList():
       else:
         pass
   return jsonify(countryList), 200
+
+	async def search_geo_by_addr(address):
+	geolocator = Nominatim(user_agent="geoapiExercises")
+	location = geolocator.geocode(address)
+	if location:
+		return {
+			"latitude": location.latitude,
+			"longitude": location.longitude,
+			"address": location.address
+		}
+	else:
+		return None
+
+async def search_addr_by_geo(latitude, longitude):
+	geolocator = Nominatim(user_agent="geoapiExercises")
+	location = geolocator.reverse((latitude, longitude))
+	if location:
+		return {
+			"latitude": latitude,
+			"longitude": longitude,
+			"address": location.address
+		}
+	else:
+		return None
